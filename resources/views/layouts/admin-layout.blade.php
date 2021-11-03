@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/panel') }}/css/sb-admin-2.min.css" rel="stylesheet">
 
+    {{-- DataTables  --}}
+    <link href="{{ asset('assets/datatables') }}/datatables.min.css" rel="stylesheet">
+
     @stack('css')
 
 </head>
@@ -94,21 +97,21 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Kelola Pengguna</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="profilUser.html">Profil</a>
-                        <a class="collapse-item" href="DaftarPengguna.html">Daftar Pengguna</a>
+            @if ($users->login_level == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Kelola Pengguna</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('daftar-pengguna') }}">Daftar Pengguna</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
@@ -249,6 +252,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/panel') }}/js/sb-admin-2.min.js"></script>
+
+    {{-- DataTables  --}}
+    <script src="{{ asset('assets/datatables') }}/datatables.min.js"></script>
 
     @stack('js')
 

@@ -13,6 +13,9 @@ Route::post('/logout', [BackController::class, 'logout'])->name('logout');
 Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function () {
     Route::get('/', [BackController::class, 'index'])->name('dashboard');
     Route::get('/profile/user', [BackController::class, 'profile'])->name('profile');
+
+    // Pengguna
+    Route::get('/daftar-pengguna', [BackController::class, 'daftar_pengguna'])->name('daftar-pengguna');
 });
 
 Route::group(['prefix' => '/'], function () {

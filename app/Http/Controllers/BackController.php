@@ -17,6 +17,17 @@ class BackController extends Controller
         ]);
     }
 
+    public function daftar_pengguna()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $pengguna = Login::where('login_level', 'user')->get();
+        return view('admin.daftar-pengguna', [
+            'users' => $users,
+            'pengguna' => $pengguna,
+        ]);
+    }
+
     public function profile()
     {
         $findSession = session('data_login');
