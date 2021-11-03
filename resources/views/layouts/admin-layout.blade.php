@@ -76,7 +76,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>KELOLA BUKU</span>
+                    <span>Kelola Buku</span>
                 </a>
                 <div id="collapseOne" class="collapse Show" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -99,7 +99,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="false" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>PENGGUNA</span>
+                    <span>Kelola Pengguna</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
@@ -114,7 +114,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="false" aria-controls="collapseThree">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>PINJAMAN</span>
+                    <span>Pinjaman</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTheree"
                     data-parent="#accordionSidebar">
