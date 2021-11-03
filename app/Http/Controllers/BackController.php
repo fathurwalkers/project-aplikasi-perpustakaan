@@ -99,7 +99,7 @@ class BackController extends Controller
             'login_username' => 'required',
             'login_password' => 'required',
             'login_email' => 'required',
-            'login_telepon' => 'required',
+            'login_telepon' => 'required'
         ]);
         $hashPassword = Hash::make($validatedLogin["login_password"], [
             'rounds' => 12,
