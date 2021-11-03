@@ -123,8 +123,8 @@
              
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <a href="" class="btn btn-sm btn-danger my-2 d-flex justify-content-center mx-2" href="#">
-                        keluar
+                    <a href="#" class="btn btn-sm btn-danger my-2 d-flex justify-content-center mx-2" data-toggle="modal" data-target="#logoutModal1">
+                        Keluar
                     </a>
                 </div>
             </div>
@@ -154,20 +154,6 @@
                     </button>
 
                     <div class="sidebar-brand-text text-primary font-weight-bold mx-3">SISTEM REKOMENDASI PENULUSURAN BUKU</div>
-                    
-                    <!-- Topbar Search -->
-                    <!-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> -->
 
                 <!-- Topbar Navbar -->
                 </nav>
@@ -227,7 +213,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="logoutModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -237,10 +223,12 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Apakah anda yakin ingin keluar dari panel ini?</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-info" type="button" data-dismiss="modal">Tidak</button>
+                    <form action="{{ route('logout') }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Ya</button>
+                    </form>
                 </div>
             </div>
         </div>
