@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackController;
 use App\Http\Controllers\HomeController;
@@ -10,5 +9,5 @@ Route::group(['prefix' => '/dashboard'], function () {
 });
 
 Route::group(['prefix' => '/'], function () {
-    Route::get('/', [BackController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 });
