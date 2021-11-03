@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\BackController;
-use App\Http\Controllers\HomeController;
 use App\Models\Login;
 
 class BackController extends Controller
