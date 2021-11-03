@@ -53,9 +53,14 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Profile Pengguna</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="ProfilDinas.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>PROFIL DINAS</span></a>
+                    <span>Tentang Dinas</span></a>
             </li>
             
             <!-- Divider -->

@@ -59,11 +59,14 @@
                                             <input type="text" class="form-control form-control-user" placeholder="Masukkan email anda..." name="login_email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" placeholder="Masukkan email anda..." name="login_username">
+                                            <input type="text" class="form-control form-control-user" placeholder="Masukkan nomor HP / Telepon anda..." name="login_telepon">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" placeholder="Masukkan username anda..." name="login_username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Masukkan Password anda..." name="login_password">
+                                            id="exampleInputPassword" placeholder="Masukkan Password anda..." name="login_password">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             DAFTAR

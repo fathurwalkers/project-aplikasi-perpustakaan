@@ -14,6 +14,7 @@ class CreateLoginsTable extends Migration
             $table->string('login_username')->unique();
             $table->string('login_password');
             $table->string('login_email')->unique();
+            $table->string('login_telepon');
             $table->text('login_token');
             $table->string('login_level'); // ADMIN - PETUGAS - USER
             $table->string('login_status'); // unverified / verified
