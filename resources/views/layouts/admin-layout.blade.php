@@ -227,6 +227,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-info" type="button" data-dismiss="modal">Tidak</button>
                     <form action="{{ route('logout') }}" method="POST">
+                        @csrf
                         <button type="submit" class="btn btn-danger">Ya</button>
                     </form>
                 </div>

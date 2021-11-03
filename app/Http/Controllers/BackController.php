@@ -3,33 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use App\Models\Login;
 
 class BackController extends Controller
 {
     public function index()
     {
-        // $users = session('data_login');
-        return view('admin.index');
+        $users = session('data_login');
+        return view('admin.index', [
+            'users' => $users
+        ]);
     }
 
     public function profile()
     {
-        // $users = session('data_login');
-        return view('admin.profile');
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.profile', [
+            'users' => $users
+        ]);
     }
 
     public function login()
     {
+        $users = session('data_login');
+        if ($users !== null) {
+            return redirect('dashboard')->with('gagal_beralih', 'Anda telah login, tidak dapat beralih ke halaman login!');
+        }
         return view('login');
     }
 
     public function register()
     {
+        $users = session('data_login');
+        if ($users !== null) {
+            return redirect('dashboard')->with('gagal_beralih', 'Anda telah login, tidak dapat beralih ke halaman login!');
+        }
         return view('register');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         $request->session()->forget(['data_login']);
         $request->session()->flush();

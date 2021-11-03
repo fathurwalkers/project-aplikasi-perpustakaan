@@ -45,6 +45,11 @@
                                             {{ session('berhasil_register') }}
                                         </div>
                                     @endif
+                                    @if (session('berhasil_logout'))
+                                        <div class="alert alert-success">
+                                            {{ session('berhasil_logout') }}
+                                        </div>
+                                    @endif
                                     @if (session('status_fail'))
                                         <div class="alert alert-success">
                                             {{ session('status_fail') }}
