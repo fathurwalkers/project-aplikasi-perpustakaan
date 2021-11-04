@@ -85,7 +85,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Navigasi Buku :</h6>
                         <a class="collapse-item" href="ProfilBuku.html">Profil Buku</a>
-                        <a class="collapse-item" href="DaftarBuku.html">Daftar Buku</a>
+                        <a class="collapse-item" href="{{ route('daftar-buku') }}">Daftar Buku</a>
                         <a class="collapse-item" href="CariBuku.html">Cari Buku</a>
                         <a class="collapse-item" href="TambahBuku.html">Tambah Buku</a>
 
