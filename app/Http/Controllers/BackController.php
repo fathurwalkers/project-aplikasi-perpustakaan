@@ -46,6 +46,24 @@ class BackController extends Controller
         ]);
     }
 
+    public function daftar_laporan()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.daftar-laporan', [
+            'users' => $users
+        ]);
+    }
+
+    public function daftar_pinjaman()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.daftar-pinjaman', [
+            'users' => $users
+        ]);
+    }
+
     public function profile()
     {
         $findSession = session('data_login');

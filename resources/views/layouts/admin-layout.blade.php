@@ -122,9 +122,9 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTheree"
                     data-parent="#accordionSidebar">
                     <div class="bg-white e py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="DaftarPinjaman.html">Daftar Pinjaman</a>
+                        <a class="collapse-item" href="{{ route('daftar-pinjaman') }}">Daftar Pinjaman</a>
                         <a class="collapse-item" href="TambahPinjaman.html">Tambah Pinjaman</a>
-                        <a class="collapse-item" href="Laporan.html">Laporan Pinjaman</a>
+                        <a class="collapse-item" href="{{ route('daftar-laporan') }}">Laporan</a>
                     </div>
                 </div>
             </li>
