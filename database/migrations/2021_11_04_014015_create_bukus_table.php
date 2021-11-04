@@ -17,6 +17,7 @@ class CreateBukusTable extends Migration
             $table->string('buku_penulis')->nullable();
             $table->string('buku_tahunterbit')->nullable();
             $table->string('buku_jumlahhalaman')->nullable();
+            $table->integer('buku_rating')->nullable()->default(0);
             $table->timestamps();
         });
     }
