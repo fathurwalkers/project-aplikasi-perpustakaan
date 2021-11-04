@@ -12,6 +12,7 @@ class CreatePinjamenTable extends Migration
             $table->id();
             $table->string('pinjaman_kode');
             $table->string('pinjaman_pengguna')->nullable();
+            $table->string('pinjaman_status')->nullable(); // AKTIF - PENDING
             $table->dateTime('tanggal_pinjam')->nullable();
             $table->dateTime('tanggal_kembali')->nullable();
 
