@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Buku;
-use App\Models\KategoriBuku;
+use App\Models\Kategori;
 
-class Kategori extends Model
+class KategoriBuku extends Model
 {
     use HasFactory;
-    protected $table = 'kategori';
+    protected $table = 'kategori_buku';
     protected $primaryKey = 'id';
     protected $guarded = [];
-
-    public function buku()
-    {
-        return $this->belongsToMany(Buku::class);
-    }
 }

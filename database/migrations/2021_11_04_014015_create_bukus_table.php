@@ -12,6 +12,7 @@ class CreateBukusTable extends Migration
             $table->id();
             $table->string('buku_judul')->nullable();
             $table->string('buku_kode')->nullable();
+            $table->string('buku_kodekategori')->nullable();
             $table->string('buku_penerbit')->nullable();
             $table->string('buku_penulis')->nullable();
             $table->string('buku_tahunterbit')->nullable();
