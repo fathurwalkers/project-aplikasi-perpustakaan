@@ -17,6 +17,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     // Pengguna
     Route::get('/daftar-pengguna', [BackController::class, 'daftar_pengguna'])->name('daftar-pengguna');
     Route::get('/daftar-buku', [BackController::class, 'daftar_buku'])->name('daftar-buku');
+    Route::get('/daftar-kategori', [BackController::class, 'daftar_kategori'])->name('daftar-kategori');
 });
 
 Route::group(['prefix' => '/'], function () {

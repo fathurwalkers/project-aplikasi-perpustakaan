@@ -26,6 +26,15 @@ class BackController extends Controller
         ]);
     }
 
+    public function daftar_kategori()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.daftar-kategori', [
+            'users' => $users
+        ]);
+    }
+
     public function daftar_pengguna()
     {
         $findSession = session('data_login');

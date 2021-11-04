@@ -1,12 +1,12 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Daftar Buku')
+@section('title', 'Daftar Kategori')
 
 @push('css')
     {{--  --}}
 @endpush
 
-@section('main-header', 'Daftar Buku')
+@section('main-header', 'Daftar Kategori')
 
 @section('main-content')
 
@@ -17,12 +17,8 @@
             <thead class="thead-dark">
                 <tr>
                     <td class="text-center">No</td>
-                    <td class="">Judul Buku</td>
-                    <td class="">Kode Buku</td>
-                    <td class="">Penulis</td>
-                    <td class="">Penerbit</td>
-                    <td class="">Tahun Terbit</td>
                     <td class="">Kategori</td>
+                    <td class="">Kode Kategori</td>
                     <td class="">Aksi</td>
                 </tr>
             </thead>
@@ -47,12 +43,8 @@
 
                 <tr>
                     <td>1</td>
-                    <td>Belajar Web Programming</td>
-                    <td>622-TMP</td>
-                    <td>Candra Wijayanto</td>
-                    <td>Media Informatika</td>
-                    <td>2021</td>
-                    <td>Teknologi - 622</td>
+                    <td>Teknologi</td>
+                    <td>600-TEKNOLOGI</td>
                     <td>
                         <div class="row mx-auto d-flex justify-content-center">
                             <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
@@ -63,12 +55,8 @@
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Advance Web Programming</td>
-                    <td>625-TMP</td>
-                    <td>Fathur Walkers</td>
-                    <td>Informatika Info</td>
-                    <td>2015</td>
-                    <td>Teknologi - 524</td>
+                    <td>Pendidikan</td>
+                    <td>700-PENDIDIKAN</td>
                     <td>
                         <div class="row mx-auto d-flex justify-content-center">
                             <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
@@ -79,12 +67,20 @@
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Bahasa Inggris Dasar</td>
-                    <td>573-TMP</td>
-                    <td>Kate Winsley</td>
-                    <td>PT. Komunikasi Inc</td>
-                    <td>2020</td>
-                    <td>Pendidikan - 568</td>
+                    <td>Sejarah</td>
+                    <td>500-SEJARAH</td>
+                    <td>
+                        <div class="row mx-auto d-flex justify-content-center">
+                            <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
+                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                            <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Komunikasi</td>
+                    <td>100-KOMUNIKASI</td>
                     <td>
                         <div class="row mx-auto d-flex justify-content-center">
                             <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
