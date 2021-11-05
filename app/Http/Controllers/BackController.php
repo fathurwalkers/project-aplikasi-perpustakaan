@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use Illuminate\Support\Arr;
 use App\Models\Login;
 use App\Models\Buku;
 use App\Models\Kategori;
@@ -312,6 +314,42 @@ class BackController extends Controller
         ]);
         $saveBuku->save();
         $saveBuku->kategori()->attach($kategori->id);
+        $kategori->buku()->attach($saveBuku->id);
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
+    }
+
+    public function generate_buku()
+    {
+        $faker = Faker::create('id_ID');
+        $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+
+        $kategori_ids = [
+            1, 2, 3, 4, 5, 6, 7, 8, 10
+        ];
+
+        // $newBuku = new Buku;
+
+        for ($i=0; $i < 5 ; $i++) {
+            $kategori_idx = $faker->randomDigitNot(0);
+            $kategori = Kategori::find($kategori_idx);
+            $newbuku = new Buku;
+            $newbuku->create([
+                'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
+                'buku_kode'                 => $buku_kode,
+                'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
+                'buku_penerbit'             => $faker->name,
+                'buku_penulis'              => $faker->company,
+                'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
+                'buku_jumlahhalaman'        => $faker->randomNumber(3),
+                'buku_support_rekomendasi'  => 0,
+                'created_at'                => now(),
+                'updated_at'                => now()
+            ]);
+            // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
+            $kategori->buku()->attach($newbuku->id);
+            $newbuku->kategori()->attach($kategori_idx);
+            $newbuku->save();
+        }
+        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Berhasil generate 50 buku!');
     }
 }

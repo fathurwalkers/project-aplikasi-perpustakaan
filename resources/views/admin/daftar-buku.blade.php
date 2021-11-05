@@ -46,13 +46,14 @@
                         <td>{{ $item->buku_penulis }}</td>
                         <td>{{ $item->buku_penerbit }}</td>
                         <td class="text-center">{{ $item->buku_tahunterbit }}</td>
-                        @foreach ($item->kategori as $kategori_buku)
+                        {{-- @foreach ($item->kategori as $kategori_buku)
                             @foreach ($kategori_buku as $kat)
-                                <td>{{ $kat->kategori_nama }}</td>
-                            @endforeach
+                                <td>{{ $kat["kategori_nama"] }}</td>
+                            @endforeach --}}
                             {{-- <td>{{ $kategori_buku->kategori_nama }}</td> --}}
                             {{-- <td>{{ $item->kategori->kategori_nama }}</td> --}}
-                        @endforeach
+                        {{-- @endforeach --}}
+                            <td>{{ $item->kategori->kategori_nama }}</td>
                         <td>
                             <div class="row mx-auto d-flex justify-content-center">
                                 <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">Lihat</button>

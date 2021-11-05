@@ -169,30 +169,5 @@ class DatabaseSeeder extends Seeder
                 'kategori_kode' => $array_kode_kategori[$i],
             ]);
         }
-
-        // SEEDING BUKU
-        $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
-
-        $kategori_ids = [
-            1, 2, 3, 4, 5, 6, 7, 8, 10
-        ];
-
-        for ($i=0; $i < 50 ; $i++) {
-            $saveBuku = new Buku;
-            $saveBuku->create([
-                'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
-                'buku_kode'                 => $buku_kode,
-                'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
-                'buku_penerbit'             => $faker->name,
-                'buku_penulis'              => $faker->company,
-                'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
-                'buku_jumlahhalaman'        => $faker->randomNumber(3),
-                'buku_support_rekomendasi'  => 0,
-                'created_at'                => now(),
-                'updated_at'                => now()
-            ]);
-            // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
-            $saveBuku->kategori()->attach($faker->randomDigitNot(0));
-        }
     }
 }

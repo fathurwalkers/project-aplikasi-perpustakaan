@@ -37,4 +37,5 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/generate-buku', [BackController::class, 'generate_buku'])->name('generate-buku');
 });
