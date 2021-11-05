@@ -42,9 +42,9 @@
 
         <div class="col-sm-4 col-md-4 col-lg-4">
             <div class="form-group">
-                <label for="buku_kodekategori" class="text-bold text-dark"><span style="color:#ff0000">* </span>Judul Buku : </label>
-                <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="buku_kodekategori" aria-describedby="buku_kodekategori" placeholder="Masukkan judul buku..." name="buku_kodekategori" autofocus>
-                <small id="buku_kodekategori" class="form-text text-muted text-bold text-dark">Contoh : Teknologi Informasi Dasar </small>
+                <label for="buku_kodekategori" class="text-bold text-dark"><span style="color:#ff0000">* </span>Kode Kategori : </label>
+                <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="buku_kodekategori" aria-describedby="buku_kodekategori" placeholder="Masukkan Kode Kategori Buku..." name="buku_kodekategori" autofocus>
+                <small id="buku_kodekategori" class="form-text text-muted text-bold text-dark">Contoh : 642.394</small>
             </div>
         </div>
 

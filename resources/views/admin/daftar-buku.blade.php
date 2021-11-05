@@ -9,6 +9,15 @@
 @section('main-header', 'Daftar Buku')
 
 @section('main-content')
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        @if (session('berhasil_tambah'))
+            <div class="alert alert-success">
+                {{ session('berhasil_tambah') }}
+            </div>
+        @endif
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -28,71 +37,28 @@
             </thead>
             
             <tbody class="text-dark">
-                {{-- @foreach ($pengguna as $item)
-                <tr>
-                    <td class="text-center">{{ $loop->iteration }}</td>
-                    <td class="">{{ $item->login_nama }}</td>
-                    <td class="">{{ $item->login_username }}</td>
-                    <td class="">{{ $item->login_email }}</td>
-                    <td class="">{{ $item->login_telepon }}</td>
-                    <td>
-                        <div class="row mx-auto d-flex justify-content-center">
-                            <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded">Hapus</button>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach --}}
 
-                <tr>
-                    <td>1</td>
-                    <td>Belajar Web Programming</td>
-                    <td>622-TMP</td>
-                    <td>Candra Wijayanto</td>
-                    <td>Media Informatika</td>
-                    <td>2021</td>
-                    <td>Teknologi - 622</td>
-                    <td>
-                        <div class="row mx-auto d-flex justify-content-center">
-                            <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded">Hapus</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Advance Web Programming</td>
-                    <td>625-TMP</td>
-                    <td>Fathur Walkers</td>
-                    <td>Informatika Info</td>
-                    <td>2015</td>
-                    <td>Teknologi - 524</td>
-                    <td>
-                        <div class="row mx-auto d-flex justify-content-center">
-                            <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded">Hapus</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Bahasa Inggris Dasar</td>
-                    <td>573-TMP</td>
-                    <td>Kate Winsley</td>
-                    <td>PT. Komunikasi Inc</td>
-                    <td>2020</td>
-                    <td>Pendidikan - 568</td>
-                    <td>
-                        <div class="row mx-auto d-flex justify-content-center">
-                            <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                            <button class="btn btn-sm btn-danger rounded">Hapus</button>
-                        </div>
-                    </td>
-                </tr>
+                @foreach ($buku as $item)
+                    <tr>
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $item->buku_judul }}</td>
+                        <td class="text-center">{{ $item->buku_kodekategori }}</td>
+                        <td>{{ $item->buku_penulis }}</td>
+                        <td>{{ $item->buku_penerbit }}</td>
+                        <td class="text-center">{{ $item->buku_tahunterbit }}</td>
+                        @foreach ($item->kategori as $kategori_buku)
+                            <td>{{ $kategori_buku->kategori_nama }}</td>
+                        @endforeach
+                        <td>
+                            <div class="row mx-auto d-flex justify-content-center">
+                                <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
+                                <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                                <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+
             </tbody>
             
         </table>

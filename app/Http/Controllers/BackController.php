@@ -24,8 +24,10 @@ class BackController extends Controller
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
+        $buku = Buku::all();
         return view('admin.daftar-buku', [
-            'users' => $users
+            'users' => $users,
+            'buku' => $buku
         ]);
     }
 
@@ -216,7 +218,6 @@ class BackController extends Controller
         ]);
         $saveBuku->save();
         $saveBuku->kategori()->attach($kategori->id);
-    
-        // dd($saveBuku);
+        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
     }
 }
