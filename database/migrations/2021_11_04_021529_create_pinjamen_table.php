@@ -16,9 +16,6 @@ class CreatePinjamenTable extends Migration
             $table->dateTime('tanggal_pinjam')->nullable();
             $table->dateTime('tanggal_kembali')->nullable();
 
-            $table->unsignedBigInteger('buku_id')->nullable()->default(null);
-            $table->foreign('buku_id')->references('id')->on('buku')->onDelete('cascade');
-
             $table->unsignedBigInteger('login_id')->nullable()->default(null);
             $table->foreign('login_id')->references('id')->on('login')->onDelete('cascade');
 

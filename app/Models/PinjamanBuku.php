@@ -4,17 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Buku;
 use App\Models\Pinjaman;
 
-class Login extends Model
+class PinjamanBuku extends Model
 {
     use HasFactory;
-    protected $table = 'login';
+    protected $table = 'pinjaman_buku';
     protected $primaryKey = 'id';
     protected $guarded = [];
-
-    public function pinjaman()
-    {
-        return $this->hasMany(Pinjaman::class);
-    }
 }

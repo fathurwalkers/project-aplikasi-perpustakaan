@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Kategori;
 use App\Models\KategoriBuku;
+use App\Models\Pinjaman;
+use App\Models\PinjamanBuku;
 
 class Buku extends Model
 {
@@ -17,5 +19,10 @@ class Buku extends Model
     public function kategori()
     {
         return $this->belongsToMany(Kategori::class);
+    }
+
+    public function pinjaman()
+    {
+        return $this->belongsToMany(Pinjaman::class);
     }
 }
