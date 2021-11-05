@@ -231,12 +231,10 @@ class BackController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        dump($savePinjaman);
         $savePinjaman->save();
         $savePinjaman->login()->associate($users->id);
-        dump($savePinjaman);
         $savePinjaman->buku()->attach($request->id_buku);
-        dd($savePinjaman);
+        return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Berhasil menyimpan Pinjaman Baru.');
     }
 
     public function post_tambah_kategori(Request $request)
