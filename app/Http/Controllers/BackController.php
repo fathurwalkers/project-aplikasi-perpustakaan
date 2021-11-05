@@ -187,6 +187,34 @@ class BackController extends Controller
         ]);
     }
 
+    public function tambah_kategori()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.tambah-kategori', [
+            'users' => $users
+        ]);
+    }
+
+    public function post_tambah_kategori(Request $request)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $validatedData = $request->validate([
+            'kategori_nama'     => 'required',
+            'kategori_kode'     => 'required',
+        ]);
+        $kategori       = new Kategori;
+        $saveKategori   = $kategori->create([
+            'kategori_nama'     => $validatedData['kategori_nama'],
+            'kategori_kode'     => $validatedData['kategori_kode'],
+            'created_at'        => now(),
+            'updated_at'        => now()
+        ]);
+        $saveKategori->save();
+        dd($saveKategorie);
+    }
+
     public function post_tambah_buku(Request $request)
     {
         $findSession = session('data_login');

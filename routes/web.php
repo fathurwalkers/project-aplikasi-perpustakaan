@@ -23,6 +23,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
 
     // Tambah Route
     Route::get('/tambah-buku', [BackController::class, 'tambah_buku'])->name('tambah-buku');
+    Route::get('/tambah-kategori', [BackController::class, 'tambah_kategori'])->name('tambah-kategori');
     
     // Post Tambah Route
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
