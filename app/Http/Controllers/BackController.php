@@ -203,13 +203,15 @@ class BackController extends Controller
         $buku = Buku::all();
         return view('admin.tambah-pinjaman', [
             'users' => $users,
-            'buku' => $buku,
+            'buku' => $buku
         ]);
     }
 
     public function post_tambah_pinjaman(Request $request)
     {
-        //
+        dump($request->id_buku);
+        dump($request->pinjaman_pengguna);
+        die;
     }
 
     public function post_tambah_kategori(Request $request)

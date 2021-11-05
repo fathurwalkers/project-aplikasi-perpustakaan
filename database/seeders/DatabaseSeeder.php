@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Faker\Factory as Faker;
-use Illuminate\Support\Arr
+use Illuminate\Support\Arr;
 use App\Models\Login;
+use App\Models\Buku;
 
 class DatabaseSeeder extends Seeder
 {
@@ -176,9 +177,10 @@ class DatabaseSeeder extends Seeder
             1, 2, 3, 4, 5, 6, 7, 8, 10
         ];
 
-        for ($i=0; $i < 20 ; $i++) { 
-            Buku::create([
-                'buku_judul'                => $faker->words($faker->randomNumber(1), true),
+        for ($i=0; $i < 50 ; $i++) {
+            $saveBuku = new Buku;
+            $saveBuku->create([
+                'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
                 'buku_kode'                 => $buku_kode,
                 'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
                 'buku_penerbit'             => $faker->name,
@@ -189,9 +191,8 @@ class DatabaseSeeder extends Seeder
                 'created_at'                => now(),
                 'updated_at'                => now()
             ]);
-            $saveBuku->save();
             // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
-            $saveBuku->kategori()->attach(Arr::random(randomDigitNot(0));
+            $saveBuku->kategori()->attach($faker->randomDigitNot(0));
         }
     }
 }

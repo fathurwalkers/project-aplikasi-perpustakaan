@@ -22,8 +22,8 @@
 
         <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-                <label for="pinjaman_pengguna" class="text-bold text-dark"><span style="color:#ff0000">* </span>Nama Kategori : </label>
-                <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="pinjaman_pengguna" aria-describedby="pinjaman_pengguna" placeholder="Masukkan Nama Kategori..." value="{{ $users->login_nama }}" name="pinjaman_pengguna" disabled>
+                <label for="pinjaman_pengguna" class="text-bold text-dark"><span style="color:#ff0000">* </span>Nama Peminjam : </label>
+                <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="pinjaman_pengguna" aria-describedby="pinjaman_pengguna" placeholder="Masukkan Nama Kategori..." value="{{ $users->login_nama }}" name="pinjaman_pengguna" readonly>
                 <small id="pinjaman_pengguna" class="form-text text-muted text-bold text-dark">Contoh : Teknologi dan Informasi </small>
             </div>
         </div>
@@ -31,19 +31,9 @@
         <div class="col-sm-6 col-md-6 col-lg-6"> 
             <label for="id_buku" class="text-bold text-dark"><span style="color:#ff0000">* </span>Pilih Buku : </label>
             <select id="choices-multiple-remove-button" placeholder="Pilih buku yang akan dipinjam..." name="id_buku[]" multiple>
-                <option value="HTML">HTML</option>
-                <option value="Jquery">Jquery</option>
-                <option value="CSS">CSS</option>
-                <option value="Bootstrap 3">Bootstrap 3</option>
-                <option value="Bootstrap 4">Bootstrap 4</option>
-                <option value="Java">Java</option>
-                <option value="Javascript">Javascript</option>
-                <option value="Angular">Angular</option>
-                <option value="Python">Python</option>
-                <option value="Hybris">Hybris</option>
-                <option value="SQL">SQL</option>
-                <option value="NOSQL">NOSQL</option>
-                <option value="NodeJS">NodeJS</option>
+                @foreach ($buku as $item)
+                    <option value="{{ $item->id }}">{{ $item->buku_judul }}</option>
+                @endforeach
             </select> 
         </div>
 
