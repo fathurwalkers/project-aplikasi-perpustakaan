@@ -15,7 +15,7 @@
         <h4 class="text-bold text-dark">Tambah Data Buku</h4>
     </div>
 </div> --}}
-<form action="{{ route('post-tambah-buku') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('post-tambah-kategori') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
 

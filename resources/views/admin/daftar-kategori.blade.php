@@ -12,6 +12,16 @@
 
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
+        @if (session('berhasil_tambah'))
+            <div class="alert alert-success">
+                {{ session('berhasil_tambah') }}
+            </div>
+        @endif
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
 
         <table id="table1" class="table table-bordered" style="width:100%">
             <thead class="thead-dark">

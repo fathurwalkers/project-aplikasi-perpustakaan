@@ -27,6 +27,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     
     // Post Tambah Route
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
+    Route::post('/post-tambah-kategori/post', [BackController::class, 'post_tambah_kategori'])->name('post-tambah-kategori');
 });
 
 Route::group(['prefix' => '/'], function () {

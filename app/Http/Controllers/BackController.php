@@ -212,7 +212,7 @@ class BackController extends Controller
             'updated_at'        => now()
         ]);
         $saveKategori->save();
-        dd($saveKategorie);
+        return redirect()->route('daftar-kategori')->with('berhasil_tambah', 'Kategori Baru telah berhasil ditambahkan!');
     }
 
     public function post_tambah_buku(Request $request)
