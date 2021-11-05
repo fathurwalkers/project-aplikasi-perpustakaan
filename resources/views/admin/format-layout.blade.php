@@ -1,12 +1,12 @@
 @extends('layouts.admin-layout')
 
-@section('title', 'Beranda')
+@section('title', 'FormatLayout')
 
 @push('css')
     
 @endpush
 
-@section('main-header', 'Dashboard Panel')
+@section('main-header', 'FormatLayout')
 
 @section('main-content')
 

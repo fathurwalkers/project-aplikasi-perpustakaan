@@ -168,4 +168,18 @@ class BackController extends Controller
         $login_data->save();
         return redirect()->route('login')->with('berhasil_register', 'Berhasil melakukan registrasi!');
     }
+
+    public function tambah_buku()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        return view('admin.tambah-buku', [
+            'users' => $users
+        ]);
+    }
+
+    public function post_tambah_buku(Request $request)
+    {
+        //
+    }
 }

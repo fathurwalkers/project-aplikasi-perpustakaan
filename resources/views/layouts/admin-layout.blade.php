@@ -87,7 +87,7 @@
                         <a class="collapse-item" href="ProfilBuku.html">Profil Buku</a>
                         <a class="collapse-item" href="{{ route('daftar-buku') }}">Daftar Buku</a>
                         <a class="collapse-item" href="CariBuku.html">Cari Buku</a>
-                        <a class="collapse-item" href="TambahBuku.html">Tambah Buku</a>
+                        <a class="collapse-item" href="{{ route('tambah-buku') }}">Tambah Buku</a>
 
                         <h6 class="collapse-header">Navigasi Kategori :</h6>
                         <a class="collapse-item" href="{{ route('daftar-kategori') }}">Daftar Kategori</a>

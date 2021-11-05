@@ -14,12 +14,18 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::get('/', [BackController::class, 'index'])->name('dashboard');
     Route::get('/profile/user', [BackController::class, 'profile'])->name('profile');
 
-    // Pengguna
+    // Daftar Route
     Route::get('/daftar-pengguna', [BackController::class, 'daftar_pengguna'])->name('daftar-pengguna');
     Route::get('/daftar-buku', [BackController::class, 'daftar_buku'])->name('daftar-buku');
     Route::get('/daftar-kategori', [BackController::class, 'daftar_kategori'])->name('daftar-kategori');
     Route::get('/daftar-pinjaman', [BackController::class, 'daftar_pinjaman'])->name('daftar-pinjaman');
     Route::get('/daftar-laporan', [BackController::class, 'daftar_laporan'])->name('daftar-laporan');
+
+    // Tambah Route
+    Route::get('/tambah-buku', [BackController::class, 'tambah_buku'])->name('tambah-buku');
+    
+    // Post Tambah Route
+    Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
 });
 
 Route::group(['prefix' => '/'], function () {
