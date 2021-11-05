@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Login;
+use App\Models\Buku;
+use App\Models\Kategori;
+use App\Models\KategoriBuku;
 
 class BackController extends Controller
 {
@@ -173,22 +176,47 @@ class BackController extends Controller
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
+        $kategori = Kategori::all();
         return view('admin.tambah-buku', [
-            'users' => $users
+            'users' => $users,
+            'kategori' => $kategori
         ]);
     }
 
     public function post_tambah_buku(Request $request)
     {
-        // $findSession = session('data_login');
-        // $users = Login::find($findSession->id);
-        // $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
-        // $validatedData = $request->validate([
-        //     'buku_judul'            => 'required',
-        //     'buku_penulis'          => 'required',
-        //     'buku_penerbit'         => 'required',
-        //     'buku_tahunterbit'      => 'required',
-        //     'buku_jumlahhalaman'    => 'required',
-        // ]);
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+        $validatedData = $request->validate([
+            'buku_judul'            => 'required',
+            'buku_penulis'          => 'required',
+            'buku_penerbit'         => 'required',
+            'buku_tahunterbit'      => 'required',
+            'buku_jumlahhalaman'    => 'required',
+            'buku_kodekategori'     => 'required',
+            'id_kategori'           => 'required|filled'
+        ]);
+        $id_kategori = intval($validatedData['id_kategori']);
+        $kategori = Kategori::find($id_kategori);
+
+        $buku_baru = new Buku;
+
+        $saveBuku = $buku_baru->create([
+            'buku_judul'                => $validatedData['buku_judul'],
+            'buku_kode'                 => $buku_kode,
+            'buku_kodekategori'         => $validatedData['buku_kodekategori'],
+            'buku_penerbit'             => $validatedData['buku_penerbit'],
+            'buku_penulis'              => $validatedData['buku_penulis'],
+            'buku_tahunterbit'          => $validatedData['buku_tahunterbit'],
+            'buku_jumlahhalaman'        => $validatedData['buku_jumlahhalaman'],
+            'buku_support_rekomendasi'  => 0,
+            'created_at'                => now(),
+            'updated_at'                => now()
+        ]);
+        $saveBuku->save();
+        $saveBuku->kategori()->attach($kategori->id);
+    
+        // dd($saveBuku);
     }
 }

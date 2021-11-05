@@ -18,13 +18,36 @@
 <form action="{{ route('post-tambah-buku') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <div class="form-group">
                 <label for="buku_judul" class="text-bold text-dark"><span style="color:#ff0000">* </span>Judul Buku : </label>
                 <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="buku_judul" aria-describedby="buku_judul" placeholder="Masukkan judul buku..." name="buku_judul" autofocus>
                 <small id="buku_judul" class="form-text text-muted text-bold text-dark">Contoh : Teknologi Informasi Dasar </small>
             </div>
         </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <label for="id_kategori" class="text-bold text-dark"><span style="color:#ff0000">* </span>Kategori : </label>
+                <select class="form-control text-bold text-dark border-1 border-dark" id="id_kategori" name="id_kategori">
+                    <option selected="null" disabled>Pilih Kategori Buku</option>
+                    @foreach ($kategori as $item)
+                        <option value="{{ $item->id }}">{{ $item->kategori_kode }} - {{ $item->kategori_nama }}</option>
+                    @endforeach
+                </select>
+                <small id="id_kategori" class="form-text text-muted text-bold text-dark">Pilih salah satu kategori buku</small>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <div class="form-group">
+                <label for="buku_kodekategori" class="text-bold text-dark"><span style="color:#ff0000">* </span>Judul Buku : </label>
+                <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="buku_kodekategori" aria-describedby="buku_kodekategori" placeholder="Masukkan judul buku..." name="buku_kodekategori" autofocus>
+                <small id="buku_kodekategori" class="form-text text-muted text-bold text-dark">Contoh : Teknologi Informasi Dasar </small>
+            </div>
+        </div>
+
     </div>
     
     <div class="row">

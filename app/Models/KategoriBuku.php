@@ -10,7 +10,7 @@ use App\Models\Kategori;
 class KategoriBuku extends Model
 {
     use HasFactory;
-    protected $table = 'kategori_buku';
+    protected $table = 'buku_kategori';
     protected $primaryKey = 'id';
     protected $guarded = [];
 }

@@ -8,7 +8,7 @@ class CreateKategoriBukusTable extends Migration
 {
     public function up()
     {
-        Schema::create('kategori_buku', function (Blueprint $table) {
+        Schema::create('buku_kategori', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('kategori_id')->nullable()->default(null);
@@ -23,6 +23,6 @@ class CreateKategoriBukusTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('kategori_buku');
+        Schema::dropIfExists('buku_kategori');
     }
 }
