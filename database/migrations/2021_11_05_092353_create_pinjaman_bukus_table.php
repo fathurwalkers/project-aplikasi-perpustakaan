@@ -8,7 +8,7 @@ class CreatePinjamanBukusTable extends Migration
 {
     public function up()
     {
-        Schema::create('pinjaman_buku', function (Blueprint $table) {
+        Schema::create('buku_pinjaman', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('buku_id')->nullable()->default(null);
@@ -23,6 +23,6 @@ class CreatePinjamanBukusTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('pinjaman_buku');
+        Schema::dropIfExists('buku_pinjaman');
     }
 }

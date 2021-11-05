@@ -10,7 +10,7 @@ use App\Models\Pinjaman;
 class PinjamanBuku extends Model
 {
     use HasFactory;
-    protected $table = 'pinjaman_buku';
+    protected $table = 'buku_pinjaman';
     protected $primaryKey = 'id';
     protected $guarded = [];
 }

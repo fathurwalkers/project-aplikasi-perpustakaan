@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use App\Models\Login;
 use App\Models\Buku;
 use App\Models\Kategori;
+use App\Models\Pinjaman;
+use App\Models\PinjamanBuku;
 use App\Models\KategoriBuku;
 
 class BackController extends Controller
@@ -209,9 +211,32 @@ class BackController extends Controller
 
     public function post_tambah_pinjaman(Request $request)
     {
-        dump($request->id_buku);
-        dump($request->pinjaman_pengguna);
-        die;
+        // dump($request->id_buku);
+        // dump($request->pinjaman_pengguna);
+        // die;
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+        $validatedData = $request->validate([
+            'id_buku'     => 'required|filled',
+        ]);
+
+        $pinjaman = new Pinjaman;
+        $savePinjaman = $pinjaman->create([
+            'pinjaman_kode' => $pinjaman_kode,
+            'pinjaman_pengguna' => $users->login_nama,
+            'pinjaman_status' => "PENDING",
+            'tanggal_pinjam' => now(),
+            'tanggal_kembali' => null,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        dump($savePinjaman);
+        $savePinjaman->save();
+        $savePinjaman->login()->associate($users->id);
+        dump($savePinjaman);
+        $savePinjaman->buku()->attach($request->id_buku);
+        dd($savePinjaman);
     }
 
     public function post_tambah_kategori(Request $request)
