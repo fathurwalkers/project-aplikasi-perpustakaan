@@ -27,6 +27,16 @@ class BackController extends Controller
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
         $buku = Buku::all();
+
+        // $arrKategori = [];
+
+        // foreach ($buku as $asdfg) {
+        //     foreach ($asdfg->kategori as $kategori) {
+        //         $arrKategori = collect([$asdfg]);
+        //     }
+        // }
+        // dd($arrKategori);
+
         return view('admin.daftar-buku', [
             'users' => $users,
             'buku' => $buku
@@ -68,8 +78,10 @@ class BackController extends Controller
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
+        $pinjaman = Pinjaman::all();
         return view('admin.daftar-pinjaman', [
-            'users' => $users
+            'users' => $users,
+            'pinjaman' => $pinjaman,
         ]);
     }
 
@@ -178,6 +190,20 @@ class BackController extends Controller
         return redirect()->route('login')->with('berhasil_register', 'Berhasil melakukan registrasi!');
     }
 
+    public function lihat_buku($id)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $id_buku = $id;
+        $buku = Buku::find($id_buku);
+        dump($buku);
+
+        return view('admin.lihat-buku', [
+            'users' => $users,
+            'buku' => $buku
+        ]);
+    }
+
     public function tambah_buku()
     {
         $findSession = session('data_login');
@@ -211,9 +237,6 @@ class BackController extends Controller
 
     public function post_tambah_pinjaman(Request $request)
     {
-        // dump($request->id_buku);
-        // dump($request->pinjaman_pengguna);
-        // die;
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
         $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));

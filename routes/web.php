@@ -20,6 +20,9 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::get('/daftar-kategori', [BackController::class, 'daftar_kategori'])->name('daftar-kategori');
     Route::get('/daftar-pinjaman', [BackController::class, 'daftar_pinjaman'])->name('daftar-pinjaman');
     Route::get('/daftar-laporan', [BackController::class, 'daftar_laporan'])->name('daftar-laporan');
+    
+    // Lihat Route
+    Route::get('/lihat-buku/lihat/buku/{id}', [BackController::class, 'lihat_buku'])->name('lihat-buku');
 
     // Tambah Route
     Route::get('/tambah-buku', [BackController::class, 'tambah_buku'])->name('tambah-buku');
