@@ -35,8 +35,10 @@ class BackController extends Controller
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
+        $kategori = Kategori::all();
         return view('admin.daftar-kategori', [
-            'users' => $users
+            'users' => $users,
+            'kategori' => $kategori
         ]);
     }
 

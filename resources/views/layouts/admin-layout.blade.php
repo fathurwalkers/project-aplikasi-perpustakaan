@@ -91,7 +91,7 @@
 
                         <h6 class="collapse-header">Navigasi Kategori :</h6>
                         <a class="collapse-item" href="{{ route('daftar-kategori') }}">Daftar Kategori</a>
-                        <a class="collapse-item" href="TambahKategori.html">Tambah Kategori</a>
+                        {{-- <a class="collapse-item" href="TambahKategori.html">Tambah Kategori</a> --}}
                     </div>
                 </div>
             </li>
