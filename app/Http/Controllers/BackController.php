@@ -196,6 +196,22 @@ class BackController extends Controller
         ]);
     }
 
+    public function tambah_pinjaman()
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $buku = Buku::all();
+        return view('admin.tambah-pinjaman', [
+            'users' => $users,
+            'buku' => $buku,
+        ]);
+    }
+
+    public function post_tambah_pinjaman(Request $request)
+    {
+        //
+    }
+
     public function post_tambah_kategori(Request $request)
     {
         $findSession = session('data_login');

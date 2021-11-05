@@ -24,10 +24,12 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     // Tambah Route
     Route::get('/tambah-buku', [BackController::class, 'tambah_buku'])->name('tambah-buku');
     Route::get('/tambah-kategori', [BackController::class, 'tambah_kategori'])->name('tambah-kategori');
+    Route::get('/tambah-pinjaman', [BackController::class, 'tambah_pinjaman'])->name('tambah-pinjaman');
     
     // Post Tambah Route
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
     Route::post('/post-tambah-kategori/post', [BackController::class, 'post_tambah_kategori'])->name('post-tambah-kategori');
+    Route::post('/post-tambah-pinjaman/post', [BackController::class, 'post_tambah_pinjaman'])->name('post-tambah-pinjaman');
 });
 
 Route::group(['prefix' => '/'], function () {

@@ -7,12 +7,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use Illuminate\Support\Arr
 use App\Models\Login;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        $faker = Faker::create('id_ID');
+
         // ADMIN
         $token = Str::random(16);
         $role = "admin";
@@ -163,6 +167,31 @@ class DatabaseSeeder extends Seeder
                 'kategori_nama' => $array_nama_kategori[$i],
                 'kategori_kode' => $array_kode_kategori[$i],
             ]);
+        }
+
+        // SEEDING BUKU
+        $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+
+        $kategori_ids = [
+            1, 2, 3, 4, 5, 6, 7, 8, 10
+        ];
+
+        for ($i=0; $i < 20 ; $i++) { 
+            Buku::create([
+                'buku_judul'                => $faker->words($faker->randomNumber(1), true),
+                'buku_kode'                 => $buku_kode,
+                'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
+                'buku_penerbit'             => $faker->name,
+                'buku_penulis'              => $faker->company,
+                'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
+                'buku_jumlahhalaman'        => $faker->randomNumber(3),
+                'buku_support_rekomendasi'  => 0,
+                'created_at'                => now(),
+                'updated_at'                => now()
+            ]);
+            $saveBuku->save();
+            // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
+            $saveBuku->kategori()->attach(Arr::random(randomDigitNot(0));
         }
     }
 }
