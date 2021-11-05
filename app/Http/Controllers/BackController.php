@@ -180,6 +180,15 @@ class BackController extends Controller
 
     public function post_tambah_buku(Request $request)
     {
-        //
+        // $findSession = session('data_login');
+        // $users = Login::find($findSession->id);
+        // $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+        // $validatedData = $request->validate([
+        //     'buku_judul'            => 'required',
+        //     'buku_penulis'          => 'required',
+        //     'buku_penerbit'         => 'required',
+        //     'buku_tahunterbit'      => 'required',
+        //     'buku_jumlahhalaman'    => 'required',
+        // ]);
     }
 }

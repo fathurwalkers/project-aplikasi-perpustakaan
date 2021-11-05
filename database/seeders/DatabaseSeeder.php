@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -126,5 +127,42 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+
+
+
+        // DATABASE SEEDER UNTUK KATEGORI
+        $array_nama_kategori = [
+            'Karya Umum',
+            'Filsafat',
+            'Agama',
+            'Ilmu-ilmu Sosial',
+            'Bahasa',
+            'Ilmu-ilmu Murni',
+            'Ilmu-ilmu Terapan',
+            'Kesenian, Hiburan dan Olahraga',
+            'Kesusastraan',
+            'Geografi dan Sejarah'
+        ];
+
+        $array_kode_kategori = [
+            '000',
+            '100',
+            '200',
+            '300',
+            '400',
+            '500',
+            '600',
+            '700',
+            '800',
+            '900'
+        ];
+        
+        for ($i = 0; $i < count($array_kode_kategori); $i++) {
+            Kategori::create([
+                'kategori_nama' => $array_nama_kategori[$i],
+                'kategori_kode' => $array_kode_kategori[$i],
+            ]);
+        }
     }
 }
