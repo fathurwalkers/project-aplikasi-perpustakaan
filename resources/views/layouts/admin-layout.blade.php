@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="blank.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>BERANDA</span></a>
             </li>
@@ -61,7 +61,7 @@
                     <span>Profile Pengguna</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ProfilDinas.html">
+                <a class="nav-link" href="{{ route('profile') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tentang Dinas</span></a>
             </li>

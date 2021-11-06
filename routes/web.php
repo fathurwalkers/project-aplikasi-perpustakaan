@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BackController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 
 Route::get('/login', [BackController::class, 'login'])->name('login');
 Route::get('/register', [BackController::class, 'register'])->name('register');
@@ -33,6 +34,17 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
     Route::post('/post-tambah-kategori/post', [BackController::class, 'post_tambah_kategori'])->name('post-tambah-kategori');
     Route::post('/post-tambah-pinjaman/post', [BackController::class, 'post_tambah_pinjaman'])->name('post-tambah-pinjaman');
+    
+    // Edit Route
+    Route::post('/edit-buku/edit/{id}', [BackController::class, 'edit_buku'])->name('edit-buku');
+
+    // Update Route
+    Route::post('/update-buku/update/{id}', [BackController::class, 'update_buku'])->name('update-buku');
+
+
+    // Test Route
+    Route::get('/test-page', [MailController::class, 'redirectmail'])->name('test-page');
+    Route::post('/test-page/konfirmasi', [MailController::class, 'konfirmasi'])->name('sendmail');
 });
 
 Route::group(['prefix' => '/'], function () {

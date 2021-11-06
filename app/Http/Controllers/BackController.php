@@ -315,6 +315,29 @@ class BackController extends Controller
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
     }
 
+    public function edit_buku(Request $request, $id)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $id_buku = $id;
+        $buku = Buku::find($id_buku);
+        $kategori = Kategori::all();
+        return view('admin.edit-buku', [
+            'users' => $users,
+            'buku' => $buku,
+            'kategori' => $kategori,
+        ]);
+    }
+
+    public function update_buku(Request $request, $id)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $id_buku = $id;
+        $buku = Buku::find($id_buku);
+        dd($buku);
+    }
+
     public function generate_buku()
     {
         $faker = Faker::create('id_ID');

@@ -58,7 +58,10 @@
                             <div class="row mx-auto d-flex justify-content-center inline">
                                 <div class="col-sm-12 col-md-12 col-lg-12 mx-auto d-flex justify-content-center inline">
                                     <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">Lihat</button>
-                                    <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                                    <form action="{{ route('edit-buku', $item->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                                    </form>
                                     <button class="btn btn-sm btn-danger rounded">Hapus</button>
                                 </div>
                             </div>
