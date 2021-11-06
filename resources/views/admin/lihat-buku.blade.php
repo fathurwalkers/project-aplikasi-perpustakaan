@@ -29,20 +29,7 @@
         <p class="text-dark">
             : {{ $buku->buku_judul }} <br>
             : {{ $buku->buku_kodekategori }} <br>
-            
-            {{-- @foreach ($buku->kategori as $item)
-                @if ($item->kategori_nama == null)
-                    : TIDAK ADA KATEGORI <br>
-                @else
-                    : {{ $item->kategori_nama }} <br>
-                @endif
-
-            @endforeach --}}
-            {{-- @php
-                $kategoriBuku = KategoriBuku::where('buku_id', $buku->id)->first();
-            @endphp --}}
-            : {{ $kategoriBuku->kategori->kategori_nama }}
-            
+            : {{ $buku->kategori->kategori_nama }} <br>
             : {{ $buku->buku_penulis }} <br>
             : {{ $buku->buku_penerbit }} <br>
             : {{ $buku->buku_tahunterbit }} <br>

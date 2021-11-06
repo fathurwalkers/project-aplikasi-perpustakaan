@@ -12,7 +12,6 @@ use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Pinjaman;
 use App\Models\PinjamanBuku;
-use App\Models\KategoriBuku;
 
 class BackController extends Controller
 {
@@ -198,16 +197,9 @@ class BackController extends Controller
         $users = Login::find($findSession->id);
         $id_buku = $id;
         $buku = Buku::find($id_buku);
-        
-        $kategori_buku = KategoriBuku::where('buku_id', $buku->id)->first();
-        foreach ($kategori_buku as $item) {
-            echo $item;
-        }
-        die;
         return view('admin.lihat-buku', [
             'users' => $users,
-            'buku' => $buku,
-            'kategoriBuku' => $kategori_buku,
+            'buku' => $buku
         ]);
     }
 
@@ -317,9 +309,9 @@ class BackController extends Controller
             'created_at'                => now(),
             'updated_at'                => now()
         ]);
+        $saveBuku->kategori()->associate($kategori->id);
         $saveBuku->save();
-        $saveBuku->kategori()->attach($kategori->id);
-        $kategori->buku()->attach($saveBuku->id);
+        // $kategori->buku()->attach($saveBuku->id);
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
     }
 
@@ -334,25 +326,28 @@ class BackController extends Controller
 
         // $newBuku = new Buku;
 
-        for ($i=0; $i < 5 ; $i++) {
-            $kategori_idx = $faker->randomDigitNot(0);
+        for ($i = 1; $i < 50; $i++) {
+            // $kategori_idx = $faker->randomDigitNot(0);
+            $kategori_idx = Arr::random($kategori_ids);
             $kategori = Kategori::find($kategori_idx);
-            $newbuku = new Buku();
-            $newbuku->create([
+            $saveBuku = new Buku;
+            $id_kat = intval($kategori->id);
+            $newbuku = $saveBuku->create([
                 'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
                 'buku_kode'                 => $buku_kode,
                 'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
-                'buku_penerbit'             => $faker->name,
-                'buku_penulis'              => $faker->company,
+                'buku_penulis'              => $faker->name,
+                'buku_penerbit'             => $faker->company,
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
                 'buku_support_rekomendasi'  => 0,
+                // 'kategori_id'               => $kategori->id,
                 'created_at'                => now(),
                 'updated_at'                => now()
             ]);
-            // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
+            $newbuku->kategori()->associate($kategori_idx);
             $newbuku->save();
-            $newbuku->kategori()->associate($kategori->id);
+            // $newbuku->save();
             // $kategori->buku()->sync($newbuku->id);
             // $kategori->save();
             // $buku_kategori = new KategoriBuku;

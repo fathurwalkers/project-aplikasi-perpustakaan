@@ -41,24 +41,26 @@
                 @foreach ($buku as $item)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $item->buku_judul }}</td>
+                        <td>{{ Str::limit($item->buku_judul, 15) }}</td>
                         <td class="text-center">{{ $item->buku_kodekategori }}</td>
                         <td>{{ $item->buku_penulis }}</td>
-                        <td>{{ $item->buku_penerbit }}</td>
+                        <td>{{ Str::limit($item->buku_penerbit, 15) }}</td>
                         <td class="text-center">{{ $item->buku_tahunterbit }}</td>
-                        @foreach ($item->kategori as $kategori_buku)
+                        {{-- @foreach ($item->kategori as $kategori_buku) --}}
                             {{-- @foreach ($kategori_buku as $kat) --}}
                                 {{-- <td>{{ $kat->kategori_nama }}</td> --}}
                             {{-- @endforeach --}}
-                            <td>{{ $kategori_buku->kategori_nama }}</td>
+                            {{-- <td>{{ $kategori_buku->kategori_nama }}</td> --}}
                             {{-- <td>{{ $item->kategori->kategori_nama }}</td> --}}
-                        @endforeach
-                            {{-- <td>{{ $item->kategori->kategori_nama }}</td> --}}
+                        {{-- @endforeach --}}
+                            <td>{{ $item->kategori->kategori_nama }}</td>
                         <td>
-                            <div class="row mx-auto d-flex justify-content-center">
-                                <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">Lihat</button>
-                                <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                            <div class="row mx-auto d-flex justify-content-center inline">
+                                <div class="col-sm-12 col-md-12 col-lg-12 mx-auto d-flex justify-content-center inline">
+                                    <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">Lihat</button>
+                                    <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                                    <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                                </div>
                             </div>
                         </td>
                     </tr>
