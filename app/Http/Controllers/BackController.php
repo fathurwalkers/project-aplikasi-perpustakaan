@@ -198,11 +198,16 @@ class BackController extends Controller
         $users = Login::find($findSession->id);
         $id_buku = $id;
         $buku = Buku::find($id_buku);
-        dump($buku);
-
+        
+        $kategori_buku = KategoriBuku::where('buku_id', $buku->id)->first();
+        foreach ($kategori_buku as $item) {
+            echo $item;
+        }
+        die;
         return view('admin.lihat-buku', [
             'users' => $users,
-            'buku' => $buku
+            'buku' => $buku,
+            'kategoriBuku' => $kategori_buku,
         ]);
     }
 
@@ -346,16 +351,16 @@ class BackController extends Controller
                 'updated_at'                => now()
             ]);
             // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
-            // $kategori->buku()->attach($newbuku->id);
-            // $newbuku->kategori()->attach($kategori_idx);
             $newbuku->save();
-            $buku_kategori = new KategoriBuku;
-            $buku_kategori->create([
-                'buku_id'           => $newbuku->id,
-                'kategori_id'       => $kategori->id,
-                'created_at'        => now(),
-                'updated_at'        => now(),
-            ]);
+            $kategori->buku()->sync($newbuku->id);
+            $newbuku->kategori()->sync($kategori_idx);
+            // $buku_kategori = new KategoriBuku;
+            // $buku_kategori->create([
+            //     'buku_id'           => $newbuku->id,
+            //     'kategori_id'       => $kategori->id,
+            //     'created_at'        => now(),
+            //     'updated_at'        => now(),
+            // ]);
         }
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Berhasil generate 50 buku!');
     }
