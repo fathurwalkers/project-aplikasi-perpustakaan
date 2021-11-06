@@ -14,7 +14,7 @@ class MailController extends Controller
 {
     public function redirectmail()
     {
-        $otpkode = Str::random(5);
+        $otpkode = strtoupper(Str::random(5));
         $mail_username  = "siakadtk123@gmail.com";
         $mail_password  = "Fathur160199Seven";
         $mail_send      = 'fathurwalkers44@gmail.com';
