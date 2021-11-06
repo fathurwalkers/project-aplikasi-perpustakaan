@@ -351,10 +351,10 @@ class BackController extends Controller
                 'updated_at'                => now()
             ]);
             // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
-            $newbuku->kategori()->sync($kategori->id);
-            $kategori->buku()->sync($newbuku->id);
-            // $kategori->save();
             $newbuku->save();
+            $newbuku->kategori()->associate($kategori->id);
+            // $kategori->buku()->sync($newbuku->id);
+            // $kategori->save();
             // $buku_kategori = new KategoriBuku;
             // $buku_kategori->create([
             //     'buku_id'           => $newbuku->id,
