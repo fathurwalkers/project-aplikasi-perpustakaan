@@ -348,7 +348,7 @@ class BackController extends Controller
             // $saveBuku->kategori()->attach(Arr::random($kategori_ids);
             // $kategori->buku()->attach($newbuku->id);
             // $newbuku->kategori()->attach($kategori_idx);
-            $newbuku->save();
+            // $newbuku->save();
             $buku_kategori = new KategoriBuku;
             $buku_kategori->create([
                 'buku_id'           => $newbuku->id,
@@ -356,7 +356,7 @@ class BackController extends Controller
                 'created_at'        => now(),
                 'updated_at'        => now(),
             ]);
-            $buku_kategori->save();
+            // $buku_kategori->save();
         }
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Berhasil generate 50 buku!');
     }
