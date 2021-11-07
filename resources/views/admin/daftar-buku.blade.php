@@ -55,15 +55,29 @@
                         {{-- @endforeach --}}
                             <td>{{ $item->kategori->kategori_nama }}</td>
                         <td>
-                            <div class="row mx-auto d-flex justify-content-center inline">
-                                <div class="col-sm-12 col-md-12 col-lg-12 mx-auto d-flex justify-content-center inline">
-                                    <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">Lihat</button>
+                            <div class="container">
+                                <div class="row mx-auto d-flex justify-content-center btn-group">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto d-flex justify-content-center btn-group">
+                                        
+                                        <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">
+                                            <i class="fas fa-edit"></i> 
+                                            Lihat
+                                        </button>
 
-                                    <form action="{{ route('edit-buku', $item->id) }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                                    </form>
-                                    <a class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#logoutModal{{ $item->id }}">Hapus</a>
+                                        <form action="{{ route('edit-buku', $item->id) }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-sm btn-primary rounded mr-1">
+                                                <i class="fas fa-edit"></i> 
+                                                Edit
+                                            </button>
+                                        </form>
+    
+                                        <a class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#logoutModal{{ $item->id }}">
+                                            <i class="fas fa-edit"></i> 
+                                            Hapus
+                                        </a>
+
+                                    </div>
                                 </div>
                             </div>
                         </td>
