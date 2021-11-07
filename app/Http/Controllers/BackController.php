@@ -359,8 +359,18 @@ class BackController extends Controller
         $buku->kategori()->dissociate($buku->kategori->id);
         $buku->kategori()->associate($id_kategori);
         $buku->save();
-
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil diubah!');
+    }
+
+    public function hapus_buku(Request $request, $id)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $id_buku = $id;
+        $buku = Buku::find($id_buku);
+        $buku->kategori()->dissociate($buku->kategori_id);
+        $buku->delete();
+        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil dihapus!');
     }
 
     public function generate_buku()
