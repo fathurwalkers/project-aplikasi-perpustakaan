@@ -49,10 +49,10 @@ class DatabaseSeeder extends Seeder
             'rounds' => 12,
         ]);
         Login::create([
-            'login_nama' => 'Indar',
-            'login_username' => 'indar',
+            'login_nama' => 'Yuyun',
+            'login_username' => 'yuyun',
             'login_password' => $hashPassword,
-            'login_email' => 'indar@gmail.com',
+            'login_email' => 'yuyun@gmail.com',
             'login_telepon' => '085342072185',
             'login_token' => $hashToken,
             'login_level' => $role,
