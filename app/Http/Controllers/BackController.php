@@ -325,17 +325,42 @@ class BackController extends Controller
         return view('admin.edit-buku', [
             'users' => $users,
             'buku' => $buku,
-            'kategori' => $kategori,
+            'kategori' => $kategori
         ]);
     }
 
     public function update_buku(Request $request, $id)
     {
+        $katid = intval($request->id_kategori);
+        $id_kategori = $katid;
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
         $id_buku = $id;
         $buku = Buku::find($id_buku);
-        dd($buku);
+
+        $validatedData = $request->validate([
+            'buku_judul'            => 'required',
+            'buku_penulis'          => 'required',
+            'buku_penerbit'         => 'required',
+            'buku_tahunterbit'      => 'required',
+            'buku_jumlahhalaman'    => 'required',
+            'buku_kodekategori'     => 'required',
+            'id_kategori'           => 'required|filled'
+        ]);
+        $updateBuku = $buku->update([
+            'buku_judul'                => $validatedData['buku_judul'],
+            'buku_kodekategori'         => $validatedData['buku_kodekategori'],
+            'buku_penerbit'             => $validatedData['buku_penerbit'],
+            'buku_penulis'              => $validatedData['buku_penulis'],
+            'buku_tahunterbit'          => $validatedData['buku_tahunterbit'],
+            'buku_jumlahhalaman'        => $validatedData['buku_jumlahhalaman'],
+            'updated_at'                => now()
+        ]);
+        $buku->kategori()->dissociate($buku->kategori->id);
+        $buku->kategori()->associate($id_kategori);
+        $buku->save();
+
+        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil diubah!');
     }
 
     public function generate_buku()

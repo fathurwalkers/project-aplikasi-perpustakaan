@@ -21,47 +21,22 @@ class MailController extends Controller
         try {
             $mail = new PHPMailer(); // create a new object
             $mail->IsSMTP(true); // enable SMTP
-            // $mail->IsMAIL(); // enable SMTP
             $mail->SMTPDebug = 0;
             $mail->Debugoutput = 'html';
             $mail->SMTPAuth = true; // authentication enabled
             $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
             $mail->Host = "smtp.gmail.com";
             $mail->Port = 465; // or 587 / 465
-            // $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-            // $mail->Host = "smtp.gmail.com";
-            // $mail->Port = 587; // or 587
             $mail->Username = $mail_username;
             $mail->Password = $mail_password;
-
-            // $mail = new PHPMailer(true);
-            // $mail->isSMTP();
-            // $mail->SMTPDebug = 2;
-            // $mail->Debugoutput = 'html';
-            // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            // $mail->Host = 'smtp.gmail.com';
-            // $mail->Port = 587;
-            // // $mail->Port = 465;
-            // $mail->SMTPSecure = 'tls';
-            // $mail->SMTPAuth = true;
-            // $mail->Username = env('MAIL_USERNAME');
-            // $mail->Password = env('MAIL_PASSWORD');
-
-    
-            // $mail->addAddress($pengguna->login_email, "VERIFIKASI SKCK");
-            // $mail->addAddress("fathurwalkers44@gmail.com", "BEM Teknik Unidayan");
-
             $mail->setFrom($mail_username, "Verifikasi OTP");
             $mail->addAddress($mail_send);
-
             $mail->isHTML(true);
             $mail->Subject = "Verifikasi OTP";
             $mail->Body = "Kode OTP Anda adalah ";
             $mail->Body .= $otpkode;
             $mail->Body .= " .";
-    
             $mail->send();
-
             return view('mail.page-konfirmasi', [
                 'otpkode' => $otpkode
             ]);
@@ -76,8 +51,17 @@ class MailController extends Controller
         // ]);
     }
 
-    public function konfirmasi()
+    public function konfirmasi(Request $request, $otpkode)
     {
-        //
+        $kodeotp = $otpkode;
+        dump($request->cek_otp);
+        dump($kodeotp);
+
+        if ($request->cek_otp == $kodeotp){
+            echo "OTP COCOK";
+        } else {
+            echo "OTP TIDAK COCOK!";
+        }
+        die;
     }
 }

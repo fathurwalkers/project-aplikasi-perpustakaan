@@ -44,7 +44,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
 
     // Test Route
     Route::get('/test-page', [MailController::class, 'redirectmail'])->name('test-page');
-    Route::post('/test-page/konfirmasi', [MailController::class, 'konfirmasi'])->name('sendmail');
+    Route::post('/test-page/konfirmasi/{otpkode}', [MailController::class, 'konfirmasi'])->name('sendmail');
 });
 
 Route::group(['prefix' => '/'], function () {
