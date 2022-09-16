@@ -29,9 +29,23 @@
     <div class="container">
 
         <div class="row mt-4">
+            <div class="col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                </div>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+            </div>
+            {{-- <div class="col-sm-2 col-md-2 col-lg-2">
+                <button type="submit" class="btn btn-md btn-info btn-block">Cari</button>
+            </div> --}}
+        </div>
+        <div class="row mt-2">
             @foreach ($buku as $item)
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-                    <div class="card" style="">
+                    <div class="card" style="s">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
