@@ -62,7 +62,7 @@
         </div>
         <div class="row mt-2">
             @foreach ($buku as $item)
-                <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <div class="col-sm-4 col-md-4 col-lg-4 mb-4 d-flex align-items-stretch">
                     <div class="card" style="s">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->buku_judul }}</h5>
