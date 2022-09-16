@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $buku = Buku::all();
+        $kategori = Buku::all();
+        return view('home.index', [
+            'buku' => $buku,
+            'kategori' => $kategori,
+        ]);
     }
 }
