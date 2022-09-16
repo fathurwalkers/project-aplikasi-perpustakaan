@@ -28,10 +28,13 @@
 
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand">Aplikasi Perpustakaan Digital</a>
-        {{-- <form class="form-inline"> --}}
-            {{-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        {{-- </form> --}}
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <button class="btn btn-info btn-md ml-2">Home</button>
+                <button class="btn btn-info btn-md ml-2">Dashboard</button>
+                <button class="btn btn-info btn-md ml-2">Pinjaman</button>
+            </div>
+        </div>
     </nav>
 
     <div class="container">
@@ -41,7 +44,14 @@
             </div>
             <div class="col-sm-8 col-md-8 col-lg-8">
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 float-center d-flex justify-content-center">
+                            <h4>
+                                Cari Buku apa ?
+                            </h4>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="searchbox" placeholder="Contoh : Buku Bahasa Indonesia">
                 </div>
             </div>
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -55,11 +65,16 @@
                 <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
                     <div class="card" style="s">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">{{ $item->buku_judul }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link float-right">Another link</a>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg">
+                                    <button class="btn btn-sm rounded btn-info float-left">Selengkapnya</button>
+                                    <button class="btn btn-sm rounded btn-success float-right">Tambah Pinjaman</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
