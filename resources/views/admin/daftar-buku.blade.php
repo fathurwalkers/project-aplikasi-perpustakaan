@@ -35,7 +35,7 @@
                     <td class="">Aksi</td>
                 </tr>
             </thead>
-            
+
             <tbody class="text-dark">
 
                 @foreach ($buku as $item)
@@ -58,22 +58,22 @@
                             <div class="container">
                                 <div class="row mx-auto d-flex justify-content-center btn-group">
                                     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto d-flex justify-content-center btn-group">
-                                        
+
                                         <button class="btn btn-sm btn-info rounded mr-1" onclick="location.href = '{{ route('lihat-buku', $item->id) }}';">
-                                            <i class="fas fa-edit"></i> 
+                                            <i class="fas fa-edit"></i>
                                             Lihat
                                         </button>
 
-                                        <form action="{{ route('edit-buku', $item->id) }}" method="POST">
+                                        <form action="{{ route('edit-buku', $item->id) }}" method="get">
                                             @csrf
                                             <button class="btn btn-sm btn-primary rounded mr-1">
-                                                <i class="fas fa-edit"></i> 
+                                                <i class="fas fa-edit"></i>
                                                 Edit
                                             </button>
                                         </form>
-    
+
                                         <a class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#logoutModal{{ $item->id }}">
-                                            <i class="fas fa-edit"></i> 
+                                            <i class="fas fa-edit"></i>
                                             Hapus
                                         </a>
 
@@ -107,7 +107,7 @@
                 @endforeach
 
             </tbody>
-            
+
         </table>
 
     </div>

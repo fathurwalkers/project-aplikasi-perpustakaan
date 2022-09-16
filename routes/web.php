@@ -21,7 +21,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::get('/daftar-kategori', [BackController::class, 'daftar_kategori'])->name('daftar-kategori');
     Route::get('/daftar-pinjaman', [BackController::class, 'daftar_pinjaman'])->name('daftar-pinjaman');
     Route::get('/daftar-laporan', [BackController::class, 'daftar_laporan'])->name('daftar-laporan');
-    
+
     // Lihat Route
     Route::get('/lihat-buku/lihat/buku/{id}', [BackController::class, 'lihat_buku'])->name('lihat-buku');
 
@@ -29,18 +29,18 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::get('/tambah-buku', [BackController::class, 'tambah_buku'])->name('tambah-buku');
     Route::get('/tambah-kategori', [BackController::class, 'tambah_kategori'])->name('tambah-kategori');
     Route::get('/tambah-pinjaman', [BackController::class, 'tambah_pinjaman'])->name('tambah-pinjaman');
-    
+
     // Post Tambah Route
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
     Route::post('/post-tambah-kategori/post', [BackController::class, 'post_tambah_kategori'])->name('post-tambah-kategori');
     Route::post('/post-tambah-pinjaman/post', [BackController::class, 'post_tambah_pinjaman'])->name('post-tambah-pinjaman');
-    
+
     // Edit Route
-    Route::post('/edit-buku/edit/{id}', [BackController::class, 'edit_buku'])->name('edit-buku');
+    Route::get('/edit-buku/edit/{id}', [BackController::class, 'edit_buku'])->name('edit-buku');
 
     // Update Route
     Route::post('/update-buku/update/{id}', [BackController::class, 'update_buku'])->name('update-buku');
-    
+
     // Hapus Route
     Route::post('/hapus-buku/hapus/{id}', [BackController::class, 'hapus_buku'])->name('hapus-buku');
 

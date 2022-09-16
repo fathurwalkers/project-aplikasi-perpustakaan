@@ -315,7 +315,7 @@ class BackController extends Controller
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
     }
 
-    public function edit_buku(Request $request, $id)
+    public function edit_buku($id)
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
@@ -338,22 +338,31 @@ class BackController extends Controller
         $id_buku = $id;
         $buku = Buku::find($id_buku);
 
-        $validatedData = $request->validate([
-            'buku_judul'            => 'required',
-            'buku_penulis'          => 'required',
-            'buku_penerbit'         => 'required',
-            'buku_tahunterbit'      => 'required',
-            'buku_jumlahhalaman'    => 'required',
-            'buku_kodekategori'     => 'required',
-            'id_kategori'           => 'required|filled'
-        ]);
+        // $validatedData = $request->validate([
+        //     'buku_judul'            => 'required',
+        //     'buku_penulis'          => 'required',
+        //     'buku_penerbit'         => 'required',
+        //     'buku_tahunterbit'      => 'required',
+        //     'buku_jumlahhalaman'    => 'required',
+        //     'buku_kodekategori'     => 'required',
+        //     'id_kategori'           => 'required|filled'
+        // ]);
+        // dd($validatedData);
+        // dd($buku);
+
+        if($request->id_kategori == null){
+            $id_kategori = $buku->kategori_id;
+        } else {
+            $id_kategori = $request->id_kategori;
+        }
+
         $updateBuku = $buku->update([
-            'buku_judul'                => $validatedData['buku_judul'],
-            'buku_kodekategori'         => $validatedData['buku_kodekategori'],
-            'buku_penerbit'             => $validatedData['buku_penerbit'],
-            'buku_penulis'              => $validatedData['buku_penulis'],
-            'buku_tahunterbit'          => $validatedData['buku_tahunterbit'],
-            'buku_jumlahhalaman'        => $validatedData['buku_jumlahhalaman'],
+            'buku_judul'                => $request->buku_judul,
+            'buku_kodekategori'         => $request->buku_kodekategori,
+            'buku_penerbit'             => $request->buku_penerbit,
+            'buku_penulis'              => $request->buku_penulis,
+            'buku_tahunterbit'          => $request->buku_tahunterbit,
+            'buku_jumlahhalaman'        => $request->buku_jumlahhalaman,
             'updated_at'                => now()
         ]);
         $buku->kategori()->dissociate($buku->kategori->id);
