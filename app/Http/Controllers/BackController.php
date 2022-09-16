@@ -337,7 +337,6 @@ class BackController extends Controller
         ]);
         $saveBuku->kategori()->associate($kategori->id);
         $saveBuku->save();
-        // $kategori->buku()->attach($saveBuku->id);
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil ditambahkan!');
     }
 
@@ -402,9 +401,6 @@ class BackController extends Controller
         $kategori_ids = [
             1, 2, 3, 4, 5, 6, 7, 8, 10
         ];
-
-        // $newBuku = new Buku;
-
         for ($i = 1; $i < 50; $i++) {
             // $kategori_idx = $faker->randomDigitNot(0);
             $kategori_idx = Arr::random($kategori_ids);
