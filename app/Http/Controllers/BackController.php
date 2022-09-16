@@ -337,25 +337,11 @@ class BackController extends Controller
         $users = Login::find($findSession->id);
         $id_buku = $id;
         $buku = Buku::find($id_buku);
-
-        // $validatedData = $request->validate([
-        //     'buku_judul'            => 'required',
-        //     'buku_penulis'          => 'required',
-        //     'buku_penerbit'         => 'required',
-        //     'buku_tahunterbit'      => 'required',
-        //     'buku_jumlahhalaman'    => 'required',
-        //     'buku_kodekategori'     => 'required',
-        //     'id_kategori'           => 'required|filled'
-        // ]);
-        // dd($validatedData);
-        // dd($buku);
-
         if($request->id_kategori == null){
             $id_kategori = $buku->kategori_id;
         } else {
             $id_kategori = $request->id_kategori;
         }
-
         $updateBuku = $buku->update([
             'buku_judul'                => $request->buku_judul,
             'buku_kodekategori'         => $request->buku_kodekategori,
