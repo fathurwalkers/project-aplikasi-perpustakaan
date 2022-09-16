@@ -17,11 +17,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+        // $findSession = session('data_login');
+        // $users = Login::find($findSession->id);
         $buku = Buku::all();
         $kategori = Buku::all();
         return view('home.index', [
             'buku' => $buku,
             'kategori' => $kategori,
+            // 'users' => $users
         ]);
     }
 }

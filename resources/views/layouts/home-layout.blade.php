@@ -31,7 +31,12 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('home') }}';">Home</button>
-                <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
+
+                @if (session('data_login') == null)
+                    <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('login') }}';">Masuk</button>
+                @else
+                    <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
+                @endif
             </div>
         </div>
     </nav>
