@@ -203,8 +203,5 @@ class DatabaseSeeder extends Seeder
                 'kategori_kode' => $kode_kategori,
             ]);
         }
-        $kategori_all = Kategori::all();
-        dump($kategori_all);
-        die;
     }
 }

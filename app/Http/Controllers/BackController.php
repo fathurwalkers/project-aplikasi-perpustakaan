@@ -403,11 +403,11 @@ class BackController extends Controller
     {
         $faker = Faker::create('id_ID');
         $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
-
         $kategori_ids = [
             1, 2, 3, 4, 5, 6, 7, 8, 10
         ];
         for ($i = 1; $i < 50; $i++) {
+            $random_support_rekomendasi = $faker->randomNumber(2);
             // $kategori_idx = $faker->randomDigitNot(0);
             $kategori_idx = Arr::random($kategori_ids);
             $kategori = Kategori::find($kategori_idx);
@@ -421,7 +421,7 @@ class BackController extends Controller
                 'buku_penerbit'             => $faker->company,
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
-                'buku_support_rekomendasi'  => 0,
+                'buku_support_rekomendasi'  => intval($random_support_rekomendasi),
                 // 'kategori_id'               => $kategori->id,
                 'created_at'                => now(),
                 'updated_at'                => now()
