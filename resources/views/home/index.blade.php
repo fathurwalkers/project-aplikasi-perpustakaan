@@ -82,7 +82,41 @@
                         </tr>
                         <tr>
                             <td class="fontubah">Total Peminjam </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_support_rekomendasi }} Kali di pinjam</td>
+                            <td class="fontubah">&nbsp;: {{ $item->buku_support_rekomendasi }} Kali di pinjam
+                                @switch($item->buku_support_rekomendasi)
+
+                                    @case($item->buku_support_rekomendasi <= 10)
+                                    <span class="badge badge-primary py-auto" id="">
+                                        Rekomendasi
+                                    </span>
+                                        @break
+
+                                    @case($item->buku_support_rekomendasi >= 11 && $item->buku_support_rekomendasi <= 20 )
+                                    <span class="badge badge-secondary py-auto" id="">
+                                        Populer
+                                    </span>
+                                        @break
+
+                                    @case($item->buku_support_rekomendasi >= 21 && $item->buku_support_rekomendasi < 40 )
+                                    <span class="badge badge-warning py-auto" id="">
+                                        Terpopuler
+                                    </span>
+                                        @break
+
+                                    @case($item->buku_support_rekomendasi >= 41 && $item->buku_support_rekomendasi < 60 )
+                                    <span class="badge badge-success py-auto" id="">
+                                        Paling Populer
+                                    </span>
+                                        @break
+
+                                    @case($item->buku_support_rekomendasi >= 61 && $item->buku_support_rekomendasi < 100 )
+                                    <span class="badge badge-lg badge-danger py-auto" id="">
+                                        Paling diminati
+                                    </span>
+                                        @break
+
+                                @endswitch
+                            </td>
                         </tr>
                         <tr>
                             <td class="fontubah">Kode Kategori </td>
