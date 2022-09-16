@@ -106,16 +106,19 @@
         console.log(pinjaman);
     });
 
-    $('#sendrequest').click(
-        $.ajax({
-            'type':'POST',
-            'data': ({
-                _token : $('input[name="_token"]').val(),
-                buku_id : array_pinjaman
-            }),
-            'url':'{{ route('post-tambah-pinjaman') }}',
-        })
-    );
+    $('#sendrequest').click(function() {
+        $('input:hidden[name=id_buku]').val(array_pinjaman);
+
+    });
+    //     $.ajax({
+    //         'type':'POST',
+    //         'data': ({
+    //             '_token' : $('input[name="_token"]').val(),
+    //             'id_buku' : array_pinjaman
+    //         }),
+    //         'url':'{{ route('post-tambah-pinjaman') }}',
+    //     })
+    // );
 </script>
 
 @endpush

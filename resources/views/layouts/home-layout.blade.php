@@ -34,6 +34,7 @@
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
                 <form action="{{ route('post-tambah-pinjaman') }}" method="post">
                     @csrf
+                    <input type="hidden" name="id_buku" value="">
                     <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjaman</button>
                 </form>
             </div>

@@ -236,6 +236,12 @@ class BackController extends Controller
 
     public function post_tambah_pinjaman(Request $request)
     {
+        $request_id_buku = $request->id_buku;
+
+        $explode_id_buku = explode(",", $request_id_buku);
+
+        $id_buku_filtered = array_filter($explode_id_buku);
+
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
         $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
@@ -243,10 +249,10 @@ class BackController extends Controller
             'id_buku'     => 'required|filled',
         ]);
 
-        $parameter_for = count($request->id_buku);
+        $parameter_for = count($id_buku_filtered);
 
         for ($i=0; $i < $parameter_for; $i++) {
-            $buku_for = Buku::find($request->id_buku[$i]);
+            $buku_for = Buku::find($id_buku_filtered[$i]);
             dump($buku_for);
             $default_support = intval($buku_for->buku_support_rekomendasi);
             $total_tambah_support = 1 + $default_support;
@@ -271,7 +277,7 @@ class BackController extends Controller
         ]);
         $savePinjaman->save();
         $savePinjaman->login()->associate($users->id);
-        $savePinjaman->buku()->attach($request->id_buku);
+        $savePinjaman->buku()->attach($id_buku_filtered);
         return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Berhasil menyimpan Pinjaman Baru.');
     }
 
