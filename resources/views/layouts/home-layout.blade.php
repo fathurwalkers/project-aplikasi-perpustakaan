@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Aplikasi Perpustakaan - @yield('title')</title>
+    <title>Aplikasi Perpustakaan - Home</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/panel') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,11 +27,11 @@
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand">Navbar</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <a class="navbar-brand">Aplikasi Perpustakaan Digital</a>
+        {{-- <form class="form-inline"> --}}
+            {{-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        {{-- </form> --}}
     </nav>
 
     <div class="container">
