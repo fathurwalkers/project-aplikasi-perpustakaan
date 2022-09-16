@@ -43,6 +43,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
 
     // Hapus Route
     Route::post('/hapus-buku/hapus/{id}', [BackController::class, 'hapus_buku'])->name('hapus-buku');
+    Route::post('/hapus-kategori/hapus/{id}', [BackController::class, 'hapus_kategori'])->name('hapus-kategori');
 
 
 

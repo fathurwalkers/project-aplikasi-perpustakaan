@@ -278,6 +278,16 @@ class BackController extends Controller
         return redirect()->route('daftar-kategori')->with('berhasil_tambah', 'Kategori Baru telah berhasil ditambahkan!');
     }
 
+    public function hapus_kategori(Request $request, $id)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $id_kategori = $id;
+        $kategori = Kategori::find($id_kategori);
+        $kategori->delete();
+        return redirect()->route('daftar-kategori')->with('berhasil_tambah', 'Kategori telah berhasil dihapus!');
+    }
+
     public function post_tambah_buku(Request $request)
     {
         $findSession = session('data_login');

@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
         @if (session('berhasil_tambah'))
-            <div class="alert alert-success">
+            <div class="alert alert-info">
                 {{ session('berhasil_tambah') }}
             </div>
         @endif
@@ -32,7 +32,7 @@
                     <td class="">Aksi</td>
                 </tr>
             </thead>
-            
+
             <tbody class="text-dark">
                 @foreach ($kategori as $item)
                     <tr>
@@ -41,15 +41,37 @@
                         <td class="text-center">{{ $item->kategori_kode }}</td>
                         <td>
                             <div class="row mx-auto d-flex justify-content-center">
-                                <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                                <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                                {{-- <button class="btn btn-sm btn-info rounded mr-1">Lihat</button> --}}
+                                {{-- <button class="btn btn-sm btn-primary rounded mr-1">Edit</button> --}}
+                                <button class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#hapusModal{{ $item->id }}">Hapus</button>
                             </div>
                         </td>
+
+                        <div class="modal fade" id="hapusModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Apakah anda yakin ingin keluar dari panel ini?</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-info" type="button" data-dismiss="modal">Tidak</button>
+                                        <form action="{{ route('hapus-kategori', $item->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Ya</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </tr>
                 @endforeach
             </tbody>
-            
+
         </table>
 
     </div>
