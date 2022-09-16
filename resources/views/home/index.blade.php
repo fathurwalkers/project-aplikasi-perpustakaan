@@ -18,7 +18,22 @@
 @endpush
 
 @section('body')
-
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-2 d-flex justify-content-end border border-1 py-2">
+        {{-- <h5 class="my-auto mr-2">
+            Total Keranjang Peminjaman : 0
+        </h5> --}}
+        <form action="{{ route('post-tambah-pinjaman') }}" method="post">
+            @csrf
+            <input type="hidden" name="id_buku" value="">
+            {{-- <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjam Sekarang</button> --}}
+            <button class="btn btn-info btn-md ml-2" id="sendrequest">
+                Total Keranjang Peminjaman :
+                <span class="badge badge-light py-auto counterbadges" id="counterbadges">0</span>
+            </button>
+        </form>
+    </div>
+</div>
 <div class="row mt-4">
     <div class="col-sm-2 col-md-2 col-lg-2">
     </div>
@@ -86,7 +101,7 @@
                         {{-- </div> --}}
                     {{-- </div> --}}
                 </div>
-                <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3" value="{{ $item->id }}">Tambah Pinjaman</button>
+                <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters" value="{{ $item->id }}">Tambah Pinjaman</button>
             </div>
         </div>
     @endforeach
@@ -99,6 +114,15 @@
 <script>
     let array_pinjaman = [];
     var token = $('meta[name="csrf-token"]').attr('content');
+
+    var count = 0;
+    var counterbadges = document.getElementById("counterbadges");
+
+    $('.counters').click(function(){
+        count++;
+        counterbadges.innerHTML = count;
+    });
+
     $("button").click(function() {
         var pinjaman = $(this).val();
         array_pinjaman.push(pinjaman);
