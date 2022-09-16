@@ -195,8 +195,8 @@ class DatabaseSeeder extends Seeder
             '900'
         ];
         $kode_kategori_default = 100;
-        for ($i = 0; $i < count($array_kode_kategori); $i++) {
-            $kode_kategori = $kode_kategori_default + 100;
+        for ($i = 0; $i < count($array_nama_kategori); $i++) {
+            $kode_kategori = $kode_kategori_default + $i;
             Kategori::create([
                 'kategori_nama' => $array_nama_kategori[$i],
                 // 'kategori_kode' => $array_kode_kategori[$i],
