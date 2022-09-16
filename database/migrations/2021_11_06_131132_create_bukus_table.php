@@ -17,7 +17,7 @@ class CreateBukusTable extends Migration
             $table->string('buku_penulis')->nullable();
             $table->string('buku_tahunterbit')->nullable();
             $table->string('buku_jumlahhalaman')->nullable();
-            $table->integer('buku_support_rekomendasi')->nullable()->default(0);
+            $table->integer('buku_support_rekomendasi')->nullable()->default(1);
 
             $table->unsignedBigInteger('kategori_id')->nullable()->default(null);
             $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');

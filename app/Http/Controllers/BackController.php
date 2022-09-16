@@ -243,6 +243,22 @@ class BackController extends Controller
             'id_buku'     => 'required|filled',
         ]);
 
+        $parameter_for = count($request->id_buku);
+
+        for ($i=0; $i < $parameter_for; $i++) {
+            $buku_for = Buku::find($request->id_buku[$i]);
+            dump($buku_for);
+            $default_support = intval($buku_for->buku_support_rekomendasi);
+            $total_tambah_support = 1 + $default_support;
+            dump($default_support);
+            dump($total_tambah_support);
+            $tambah_support = $buku_for->update([
+                'buku_support_rekomendasi' => $total_tambah_support,
+                'updated_at' => now()
+            ]);
+            dump($buku_for);
+        }
+
         $pinjaman = new Pinjaman;
         $savePinjaman = $pinjaman->create([
             'pinjaman_kode' => $pinjaman_kode,

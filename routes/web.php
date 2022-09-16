@@ -45,8 +45,6 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::post('/hapus-buku/hapus/{id}', [BackController::class, 'hapus_buku'])->name('hapus-buku');
     Route::post('/hapus-kategori/hapus/{id}', [BackController::class, 'hapus_kategori'])->name('hapus-kategori');
 
-
-
     // Test Route
     Route::get('/test-page', [MailController::class, 'redirectmail'])->name('test-page');
     Route::post('/test-page/konfirmasi/{otpkode}', [MailController::class, 'konfirmasi'])->name('sendmail');
