@@ -142,12 +142,44 @@ class DatabaseSeeder extends Seeder
             'Filsafat',
             'Agama',
             'Ilmu-ilmu Sosial',
-            'Bahasa',
+            'Sastra',
+            'Sastra Indonesia',
+            'Sastra Inggris',
             'Ilmu-ilmu Murni',
             'Ilmu-ilmu Terapan',
             'Kesenian, Hiburan dan Olahraga',
             'Kesusastraan',
-            'Geografi dan Sejarah'
+            'Geografi dan Sejarah',
+            'Jurnal (Teori & Praktik)',
+            'Bahasa Pemrograman',
+            'Penanganan Ternak',
+            'Informasi dan Teknologi',
+            'Ensiklopedia',
+            'Bisnis',
+            'Humor',
+            'Pertanian',
+            'Budidaya Ternak',
+            'Kebidanan',
+            'Politik',
+            'Moral',
+            'Biologi',
+            'Psikologi',
+            'Akuntansi',
+            'Pendidikan Anak Usia Dini',
+            'Kesehatan',
+            'Ekonomi',
+            'Flora',
+            'Fauna',
+            'Matematika',
+            'Teknik',
+            'Mesin',
+            'Ilmu Astronomi',
+            'Ternak',
+            'Statistik',
+            'Sains',
+            'Manajemen',
+            'Ilmu Sejarah',
+            'RPUL',
         ];
 
         $array_kode_kategori = [
@@ -162,12 +194,17 @@ class DatabaseSeeder extends Seeder
             '800',
             '900'
         ];
-        
+        $kode_kategori_default = 100;
         for ($i = 0; $i < count($array_kode_kategori); $i++) {
+            $kode_kategori = $kode_kategori_default + 100;
             Kategori::create([
                 'kategori_nama' => $array_nama_kategori[$i],
-                'kategori_kode' => $array_kode_kategori[$i],
+                // 'kategori_kode' => $array_kode_kategori[$i],
+                'kategori_kode' => $kode_kategori,
             ]);
         }
+        $kategori_all = Kategori::all();
+        dump($kategori_all);
+        die;
     }
 }
