@@ -60,12 +60,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Profile Pengguna</span></a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('profile') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tentang Dinas</span></a>
-            </li>
-            
+            </li> --}}
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -73,7 +73,7 @@
             <div class="sidebar-heading">
                 Menu Navigasi
             </div>
-            
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </li>
-             
+
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <a href="#" class="btn btn-sm btn-danger my-2 d-flex justify-content-center mx-2" data-toggle="modal" data-target="#logoutModal1">
@@ -165,7 +165,7 @@
 
                 <!-- Topbar Navbar -->
                 </nav>
-                
+
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -192,7 +192,7 @@
                         </div>
                     </div>
                     <!-- Page Heading -->
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 
