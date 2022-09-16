@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    @yield('meta')
 
     <title>Aplikasi Perpustakaan - @yield('title')</title>
 
@@ -31,7 +32,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('home') }}';">Home</button>
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
-                <button class="btn btn-info btn-md ml-2">Pinjaman</button>
+                <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjaman</button>
             </div>
         </div>
     </nav>
