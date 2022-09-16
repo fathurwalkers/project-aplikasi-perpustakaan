@@ -41,7 +41,37 @@
                 <div class="card-body">
                     {{-- <h5 class="card-title">{{ $item->buku_judul }}</h5> --}}
                     <h6 class="card-subtitle mb-2 text-muted text-dark">{{ $item->buku_judul }}</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                    <table>
+                        <tr>
+                            <td>Penulis </td>
+                            <td>&nbsp; : {{ $item->buku_penulis }}</td>
+                        </tr>
+                        <tr>
+                            <td>Penerbit </td>
+                            <td>&nbsp;: {{ $item->buku_penerbit }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tahun Terbit </td>
+                            <td>&nbsp;: {{ $item->buku_tahunterbit }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Halaman </td>
+                            <td>&nbsp;: {{ $item->buku_jumlahhalaman }} Halaman</td>
+                        </tr>
+                        <tr>
+                            <td>Total Peminjam </td>
+                            <td>&nbsp;: {{ $item->buku_support_rekomendasi }} Kali di pinjam</td>
+                        </tr>
+                        <tr>
+                            <td>Kode Kategori </td>
+                            <td>&nbsp;: {{ $item->buku_kodekategori }}</td>
+                        </tr>
+                        <tr>
+                            <td>Kategori </td>
+                            <td>&nbsp;: {{ $item->kategori->kategori_nama }}</td>
+                        </tr>
+                    </table>
 
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg">
