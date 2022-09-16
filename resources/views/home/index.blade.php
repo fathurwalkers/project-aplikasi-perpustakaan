@@ -110,10 +110,10 @@
         $.ajax({
             'type':'POST',
             'data': ({
-                _token: token,
+                _token : $('input[name="_token"]').val(),
                 buku_id : array_pinjaman
             }),
-            'url':'{{ route('tambah-pinjaman') }}',
+            'url':'{{ route('post-tambah-pinjaman') }}',
         })
     );
 </script>

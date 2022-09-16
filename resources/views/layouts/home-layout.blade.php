@@ -32,7 +32,10 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('home') }}';">Home</button>
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
-                <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjaman</button>
+                <form action="{{ route('post-tambah-pinjaman') }}" method="post">
+                    @csrf
+                    <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjaman</button>
+                </form>
             </div>
         </div>
     </nav>
