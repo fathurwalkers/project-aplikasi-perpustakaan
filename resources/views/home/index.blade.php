@@ -175,26 +175,20 @@
     });
 
     // Live Search Function
-    $(document).ready(function() {
-
-        let searchbox = $('#searchbox').val();
-
-        if (searchbox == "") {
-           $("#displaycontainer").html("");
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "{{ route('post-search') }}",
-                data: {
-                    search: searchbox
-                },
-                success: function(html) {
-                    $("#displaycontainer").html(html).show();
-                }
-            });
-        }
-
-    });
+    $('#searchbox').on('keyup',function(){
+        $value=$(this).val();
+        $.ajax({
+            type : 'POST',
+            url : '{{route('post-search')}}',
+            data:{
+                '_token' : '{{ csrf_token() }}',
+                'search':$value,
+            },
+            success:function(data) {
+                $('tbody').html(data);
+            }
+        });
+    })
 </script>
 
 @endpush
