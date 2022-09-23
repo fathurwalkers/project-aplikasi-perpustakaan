@@ -17,8 +17,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $findSession = session('data_login');
-        // $users = Login::find($findSession->id);
         $buku = Buku::all();
         $kategori = Buku::all();
         return view('home.index', [
@@ -26,5 +24,11 @@ class HomeController extends Controller
             'kategori' => $kategori,
             // 'users' => $users
         ]);
+    }
+
+    public function post_search(Request $request)
+    {
+        $search = $request->search;
+        dd($search);
     }
 }

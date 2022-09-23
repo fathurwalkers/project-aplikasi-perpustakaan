@@ -55,90 +55,92 @@
         <button type="submit" class="btn btn-md btn-info btn-block">Cari</button>
     </div> --}}
 </div>
-<div class="row mt-2">
+<div class="row mt-2" id="displaycontainer">
+
     @foreach ($buku as $item)
-        <div class="col-sm-6 col-md-6 col-lg-6 mb-4">
-            <div class="card h-100 w-100" style="s">
-                <div class="card-body">
-                    {{-- <h5 class="card-title">{{ $item->buku_judul }}</h5> --}}
-                    <h6 class="card-subtitle mb-2 text-muted text-dark text-center">{{ $item->buku_judul }}</h6>
+    <div class="col-sm-6 col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 w-100" style="s">
+            <div class="card-body">
+                {{-- <h5 class="card-title">{{ $item->buku_judul }}</h5> --}}
+                <h6 class="card-subtitle mb-2 text-muted text-dark text-center">{{ $item->buku_judul }}</h6>
 
-                    <table>
-                        <tr>
-                            <td class="fontubah">Penulis </td>
-                            <td class="fontubah">&nbsp; : {{ $item->buku_penulis }}</td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Penerbit </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_penerbit }}</td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Tahun Terbit </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_tahunterbit }}</td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Jumlah Halaman </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_jumlahhalaman }} Halaman</td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Total Peminjam </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_support_rekomendasi }} Kali di pinjam
-                                @switch($item->buku_support_rekomendasi)
+                <table>
+                    <tr>
+                        <td class="fontubah">Penulis </td>
+                        <td class="fontubah">&nbsp; : {{ $item->buku_penulis }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Penerbit </td>
+                        <td class="fontubah">&nbsp;: {{ $item->buku_penerbit }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Tahun Terbit </td>
+                        <td class="fontubah">&nbsp;: {{ $item->buku_tahunterbit }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Jumlah Halaman </td>
+                        <td class="fontubah">&nbsp;: {{ $item->buku_jumlahhalaman }} Halaman</td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Total Peminjam </td>
+                        <td class="fontubah">&nbsp;: {{ $item->buku_support_rekomendasi }} Kali di pinjam
+                            @switch($item->buku_support_rekomendasi)
 
-                                    @case($item->buku_support_rekomendasi <= 10)
-                                    <span class="badge badge-primary py-auto" id="">
-                                        Rekomendasi
-                                    </span>
-                                        @break
+                                @case($item->buku_support_rekomendasi <= 10)
+                                <span class="badge badge-primary py-auto" id="">
+                                    Rekomendasi
+                                </span>
+                                    @break
 
-                                    @case($item->buku_support_rekomendasi >= 11 && $item->buku_support_rekomendasi <= 20 )
-                                    <span class="badge badge-secondary py-auto" id="">
-                                        Populer
-                                    </span>
-                                        @break
+                                @case($item->buku_support_rekomendasi >= 11 && $item->buku_support_rekomendasi <= 20 )
+                                <span class="badge badge-secondary py-auto" id="">
+                                    Populer
+                                </span>
+                                    @break
 
-                                    @case($item->buku_support_rekomendasi >= 21 && $item->buku_support_rekomendasi < 40 )
-                                    <span class="badge badge-warning py-auto" id="">
-                                        Terpopuler
-                                    </span>
-                                        @break
+                                @case($item->buku_support_rekomendasi >= 21 && $item->buku_support_rekomendasi < 40 )
+                                <span class="badge badge-warning py-auto" id="">
+                                    Terpopuler
+                                </span>
+                                    @break
 
-                                    @case($item->buku_support_rekomendasi >= 41 && $item->buku_support_rekomendasi < 60 )
-                                    <span class="badge badge-success py-auto" id="">
-                                        Paling Populer
-                                    </span>
-                                        @break
+                                @case($item->buku_support_rekomendasi >= 41 && $item->buku_support_rekomendasi < 60 )
+                                <span class="badge badge-success py-auto" id="">
+                                    Paling Populer
+                                </span>
+                                    @break
 
-                                    @case($item->buku_support_rekomendasi >= 61 && $item->buku_support_rekomendasi < 100 )
-                                    <span class="badge badge-lg badge-danger py-auto" id="">
-                                        Paling diminati
-                                    </span>
-                                        @break
+                                @case($item->buku_support_rekomendasi >= 61 && $item->buku_support_rekomendasi < 100 )
+                                <span class="badge badge-lg badge-danger py-auto" id="">
+                                    Paling diminati
+                                </span>
+                                    @break
 
-                                @endswitch
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Kode Kategori </td>
-                            <td class="fontubah">&nbsp;: {{ $item->buku_kodekategori }}</td>
-                        </tr>
-                        <tr>
-                            <td class="fontubah">Kategori </td>
-                            <td class="fontubah">&nbsp;: {{ $item->kategori->kategori_nama }}</td>
-                        </tr>
-                    </table>
+                            @endswitch
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Kode Kategori </td>
+                        <td class="fontubah">&nbsp;: {{ $item->buku_kodekategori }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fontubah">Kategori </td>
+                        <td class="fontubah">&nbsp;: {{ $item->kategori->kategori_nama }}</td>
+                    </tr>
+                </table>
 
-                    {{-- <div class="row"> --}}
-                        {{-- <div class="col-sm-12 col-md-12 col-lg"> --}}
-                            {{-- <button class="btn btn-sm rounded btn-info float-left">Selengkapnya</button> --}}
-                            {{-- <button class="btn btn-sm rounded btn-success btn-block mt-auto">Tambah Pinjaman</button> --}}
-                        {{-- </div> --}}
+                {{-- <div class="row"> --}}
+                    {{-- <div class="col-sm-12 col-md-12 col-lg"> --}}
+                        {{-- <button class="btn btn-sm rounded btn-info float-left">Selengkapnya</button> --}}
+                        {{-- <button class="btn btn-sm rounded btn-success btn-block mt-auto">Tambah Pinjaman</button> --}}
                     {{-- </div> --}}
-                </div>
-                <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters" value="{{ $item->id }}">Tambah Pinjaman</button>
+                {{-- </div> --}}
             </div>
+            <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters" value="{{ $item->id }}">Tambah Pinjaman</button>
         </div>
+    </div>
     @endforeach
+
 </div>
 
 @endsection
@@ -168,15 +170,28 @@
         $('input:hidden[name=id_buku]').val(array_pinjaman);
 
     });
-    //     $.ajax({
-    //         'type':'POST',
-    //         'data': ({
-    //             '_token' : $('input[name="_token"]').val(),
-    //             'id_buku' : array_pinjaman
-    //         }),
-    //         'url':'{{ route('post-tambah-pinjaman') }}',
-    //     })
-    // );
+
+    // Live Search Function
+    $(document).ready(function() {
+
+        let searchbox = $('#searchbox').val();
+
+        if (searchbox == "") {
+           $("#displaycontainer").html("");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('post-search') }}",
+                data: {
+                    search: searchbox
+                },
+                success: function(html) {
+                    $("#displaycontainer").html(html).show();
+                }
+            });
+        }
+
+    });
 </script>
 
 @endpush
