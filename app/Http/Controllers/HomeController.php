@@ -29,7 +29,6 @@ class HomeController extends Controller
     public function post_search(Request $request)
     {
         $buku = Buku::all();
-        $search = $request->search;
         dump($buku);
     }
 }

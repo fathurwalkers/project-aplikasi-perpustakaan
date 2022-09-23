@@ -177,11 +177,13 @@
     // Live Search Function
     $('#searchbox').on('keyup',function(){
         $value=$(this).val();
+        $token = $('input[name="_token"]').val();
         $.ajax({
             type : 'POST',
             url : '{{route('post-search')}}',
-            data:{
-                '_token' : '{{ csrf_token() }}',
+            data: {
+                // '_token' : '{{ csrf_token() }}',
+                '_token' :$token,
                 'search':$value,
             },
             success:function(data) {
