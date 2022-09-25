@@ -461,7 +461,7 @@ class BackController extends Controller
         $kategori_ids = [
             1, 2, 3, 4, 5, 6, 7, 8, 10
         ];
-        for ($i = 1; $i < 50; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             $random_support_rekomendasi = $faker->randomNumber(2);
             $kategori_idx = Arr::random($kategori_ids);
             $kategori = Kategori::find($kategori_idx);
