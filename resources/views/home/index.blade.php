@@ -20,13 +20,9 @@
 @section('body')
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-2 d-flex justify-content-end border border-1 py-2">
-        {{-- <h5 class="my-auto mr-2">
-            Total Keranjang Peminjaman : 0
-        </h5> --}}
         <form action="{{ route('post-tambah-pinjaman') }}" method="post">
             @csrf
             <input type="hidden" name="id_buku" value="">
-            {{-- <button class="btn btn-info btn-md ml-2" id="sendrequest">Pinjam Sekarang</button> --}}
             <button class="btn btn-info btn-md ml-2" id="sendrequest">
                 Total Keranjang Peminjaman :
                 <span class="badge badge-light py-auto counterbadges" id="counterbadges">0</span>
@@ -54,9 +50,6 @@
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2">
     </div>
-    {{-- <div class="col-sm-2 col-md-2 col-lg-2">
-        <button type="submit" class="btn btn-md btn-info btn-block">Cari</button>
-    </div> --}}
 </div>
 <div class="row mt-2" id="displaycontainer">
 
@@ -175,7 +168,6 @@
             type : 'POST',
             url : '{{route('post-search')}}',
             data: {
-                // '_token' : '{{ csrf_token() }}',
                 '_token' :$token,
                 'search':$value,
             },
@@ -241,10 +233,6 @@
                         output += '</span>';
                     }
 
-                    // output += '<span class="badge badge-primary py-auto" id="">';
-                    // output += ' Rekomendasi';
-                    // output += '</span>';
-
                     output += '</td>';
                     output += '</tr>';
                     output += '<tr>';
@@ -261,8 +249,6 @@
                     output += '</div>';
                     output += '</div>';
 
-                    // $('.bukujudul').html(buku_get['buku_judul']);
-                    // $('.bukupenulis').html(buku_get['buku_penulis']);
                     $('#displaycontainer').html(output);
                 }
             }
