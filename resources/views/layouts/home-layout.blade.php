@@ -33,8 +33,10 @@
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('home') }}';">Home</button>
 
                 @if (session('data_login') == null)
+                    <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('profil-dinas') }}';">Profil Dinas</button>
                     <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('login') }}';">Masuk</button>
                 @else
+                    <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('profil-dinas') }}';">Profil Dinas</button>
                     <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('dashboard') }}';">Dashboard</button>
                 @endif
             </div>

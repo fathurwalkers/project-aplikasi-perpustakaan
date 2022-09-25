@@ -12,6 +12,18 @@ Route::post('/post-login', [BackController::class, 'post_login'])->name('post-lo
 Route::post('/post-register', [BackController::class, 'post_register'])->name('post-register');
 Route::post('/logout', [BackController::class, 'logout'])->name('logout');
 
+Route::get('/pdf/profil-dinas', function () {
+    // file path
+    $file = 'profil-dinas.pdf';
+    $path = public_path('/' . $file);
+        // header
+    $header = [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . $file . '"'
+    ];
+    return response()->file($path, $header);
+})->name('profil-dinas');
+
 Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function () {
     Route::get('/', [BackController::class, 'index'])->name('dashboard');
     Route::get('/profile/user', [BackController::class, 'profile'])->name('profile');
