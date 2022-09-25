@@ -181,15 +181,10 @@
             },
             success:function(data) {
 
-                // $('#diplaycontainer').html(data);
-                // console.log(data.buku.length);
                 let buku_ukuran = data.buku.length;
                 var output = '';
                 for (let i = 0; i < buku_ukuran; i++) {
                     let buku_get = data.buku[i];
-                    // console.log(buku_get);
-                    // console.log(data.kategori[1]['kategori_nama']);
-                    // console.log(buku_get['buku_judul']);
 
                     output += '<div class="col-sm-6 col-md-6 col-lg-6 mb-4">';
                     output += '<div class="card h-100 w-100" style="s">';
@@ -215,38 +210,6 @@
                     output += '            <tr>';
                     output += '                <td class="fontubah">Total Peminjam </td>';
                     output += '<td class="fontubah bukutotalpinjam">&nbsp;: '+buku_get['buku_support_rekomendasi']+' Kali di pinjam';
-
-                    // switch (buku_get['buku_support_rekomendasi']) {
-                    //     case (buku_get['buku_support_rekomendasi'] < 10):
-                    //         output += '<span class="badge badge-primary py-auto" id="">';
-                    //         output += ' Rekomendasi';
-                    //         output += '</span>';
-                    //         break;
-
-                    //     case (buku_get['buku_support_rekomendasi'] > 11 && buku_get['buku_support_rekomendasi'] < 20):
-                    //         output += '<span class="badge badge-secondary py-auto" id="">';
-                    //         output += ' Populer';
-                    //         output += '</span>';
-                    //         break;
-
-                    //     case (buku_get['buku_support_rekomendasi'] > 21 && buku_get['buku_support_rekomendasi'] < 40):
-                    //         output += '<span class="badge badge-warning py-auto" id="">';
-                    //         output += 'Terpopuler';
-                    //         output += '</span>';
-                    //         break;
-
-                    //     case (buku_get['buku_support_rekomendasi'] > 41 && buku_get['buku_support_rekomendasi'] < 60):
-                    //         output += '<span class="badge badge-success py-auto" id="">';
-                    //         output += ' Paling Populer';
-                    //         output += '</span>';
-                    //         break;
-
-                    //     case (buku_get['buku_support_rekomendasi'] > 61 && buku_get['buku_support_rekomendasi'] < 100):
-                    //         output += '<span class="badge badge-danger py-auto" id="">';
-                    //         output += ' Paling Diminat';
-                    //         output += '</span>';
-                    //         break;
-                    // }
 
                     if (buku_get['buku_support_rekomendasi'] <= 10) {
                         output += '<span class="badge badge-primary py-auto" id="">';

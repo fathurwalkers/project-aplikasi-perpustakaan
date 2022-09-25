@@ -23,7 +23,6 @@ class HomeController extends Controller
         return view('home.index', [
             'buku' => $buku,
             'kategori' => $kategori,
-            // 'users' => $users
         ]);
     }
 
@@ -31,23 +30,11 @@ class HomeController extends Controller
     {
         $searchquery = $request->search;
         $cari = '%' . $searchquery . '%';
-        // $buku = Buku::all();
         $kategori = Kategori::all();
         $buku = Buku::where('buku_judul','LIKE','%'.$searchquery.'%')->get();
-        // $buku = Buku::where('buku_judul', 'LIKE', '%$searchquery%')->get();
-        // $buku = Buku::where('buku_judul', 'LIKE', $cari)
-        //         ->orWhere('buku_kategori', 'LIKE', $cari)
-        //         ->orWhere('buku_penerbit', 'LIKE', $cari)
-        //         ->orWhere('buku_penulis', 'LIKE', $cari)
-        //         ->orWhere('buku_tahunterbit', 'LIKE', $cari)
-        //         ->get();
-
-        // return ['buku' => $buku];
         return response()->json([
             'buku' => $buku,
             'kategori' => $kategori,
         ]);
-
-        // ['buku_judul','buku_kodekategori','buku_penerbit','buku_penulis','buku_tahunterbit','buku_jumlahhalaman','buku_support_rekomendasi']
     }
 }
