@@ -79,11 +79,61 @@ class BackController extends Controller
     {
         $findSession = session('data_login');
         $users = Login::find($findSession->id);
-        $pinjaman = Pinjaman::all();
-        return view('admin.daftar-pinjaman', [
-            'users' => $users,
-            'pinjaman' => $pinjaman,
+        // dd($users->login_level);
+
+        if ($users->login_level == 'admin') {
+            $pinjaman = Pinjaman::all();
+            return view('admin.daftar-pinjaman', [
+                'users' => $users,
+                'pinjaman' => $pinjaman,
+            ]);
+        }
+
+        if ($users->login_level == 'user') {
+            $pinjaman = Pinjaman::where('login_id', $users->id)->get();
+            return view('admin.daftar-pinjaman', [
+                'users' => $users,
+                'pinjaman' => $pinjaman,
+            ]);
+        }
+
+    }
+
+    public function konfirmasi_pinjaman(Request $request)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $pinjaman_id = $request->pinjaman_id;
+        $pinjaman = Pinjaman::find($pinjaman_id);
+        $pinjaman->update([
+            'pinjaman_status' => "AKTIF",
+            'updated_at' => now(),
         ]);
+        return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Berhasil melakukan konfirmasi peminjaman');
+    }
+
+    public function konfirmasi_pengembalian(Request $request)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $pinjaman_id = $request->pinjaman_id;
+        $pinjaman = Pinjaman::find($pinjaman_id);
+        $pinjaman->update([
+            'tanggal_kembali' => now(),
+            'pinjaman_status' => "BERAKHIR",
+            'updated_at' => now(),
+        ]);
+        return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Berhasil melakukan pengembalian peminjaman');
+    }
+
+    public function hapus_pinjaman(Request $request)
+    {
+        $findSession = session('data_login');
+        $users = Login::find($findSession->id);
+        $pinjaman_id = $request->pinjaman_id;
+        $pinjaman = Pinjaman::find($pinjaman_id);
+        $pinjaman->forceDelete();
+        return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Buku telah berhasil dihapus!');
     }
 
     public function profile()
@@ -242,8 +292,8 @@ class BackController extends Controller
 
         $id_buku_filtered = array_filter($explode_id_buku);
 
-        $findSession = session('data_login');
-        $users = Login::find($findSession->id);
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
         $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
         $validatedData = $request->validate([
             'id_buku'     => 'required|filled',
@@ -268,6 +318,7 @@ class BackController extends Controller
             'pinjaman_status' => "PENDING",
             'tanggal_pinjam' => now(),
             'tanggal_kembali' => null,
+            'login_id' => $users->id,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -404,7 +455,6 @@ class BackController extends Controller
         ];
         for ($i = 1; $i < 50; $i++) {
             $random_support_rekomendasi = $faker->randomNumber(2);
-            // $kategori_idx = $faker->randomDigitNot(0);
             $kategori_idx = Arr::random($kategori_ids);
             $kategori = Kategori::find($kategori_idx);
             $saveBuku = new Buku;
@@ -418,23 +468,11 @@ class BackController extends Controller
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
                 'buku_support_rekomendasi'  => intval($random_support_rekomendasi),
-                // 'kategori_id'               => $kategori->id,
                 'created_at'                => now(),
                 'updated_at'                => now()
             ]);
             $newbuku->kategori()->associate($kategori_idx);
             $newbuku->save();
-            // $newbuku->save();
-            // $kategori->buku()->sync($newbuku->id);
-            // $kategori->save();
-            // $buku_kategori = new KategoriBuku;
-            // $buku_kategori->create([
-            //     'buku_id'           => $newbuku->id,
-            //     'kategori_id'       => $kategori->id,
-            //     'created_at'        => now(),
-            //     'updated_at'        => now(),
-            // ]);
-            // $buku_kategori->save();
         }
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Berhasil generate 50 buku!');
     }

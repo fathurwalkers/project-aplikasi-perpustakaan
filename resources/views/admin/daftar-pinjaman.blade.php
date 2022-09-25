@@ -35,7 +35,7 @@
                     <td class="">Aksi</td>
                 </tr>
             </thead>
-            
+
             <tbody class="text-dark">
                 @foreach ($pinjaman as $item)
                     <tr>
@@ -62,19 +62,50 @@
                                 <button class="badge badge-success" type="button">{{ $item->pinjaman_status }}</button>
                                 </div>
                             </td>
+                        @elseif ($item->pinjaman_status == "BERAKHIR")
+                            <td>
+                                <div class="row mx-auto d-flex justify-content-center">
+                                <button class="badge badge-primary" type="button">{{ $item->pinjaman_status }}</button>
+                                </div>
+                            </td>
                         @endif
 
                         <td>
                             <div class="row mx-auto d-flex justify-content-center">
-                                <button class="btn btn-sm btn-info rounded mr-1">Lihat</button>
-                                <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger rounded">Hapus</button>
+
+                                @if ($item->pinjaman_status == "PENDING")
+                                    @if ($users->login_level == 'admin')
+                                        <form action="{{ route('konfirmasi-pinjaman') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="pinjaman_id" value="{{ $item->id }}">
+                                            <button type="submit" class="btn btn-sm btn-info rounded mr-1">Konfirmasi</button>
+                                        </form>
+                                    @endif
+                                @endif
+
+                                @if ($users->login_level == 'user')
+                                    @if ($item->pinjaman_status !== "BERAKHIR" && $item->pinjaman_status !== "PENDING")
+                                    <form action="{{ route('konfirmasi-pengembalian') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="pinjaman_id" value="{{ $item->id }}">
+                                        <button type="submit" class="btn btn-sm btn-primary rounded mr-1">Pengembalian</button>
+                                    </form>
+                                    @endif
+                                @endif
+
+                                @if ($users->login_level == 'admin')
+                                    <form action="{{ route('hapus-pinjaman') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="pinjaman_id" value="{{ $item->id }}">
+                                        <button class="btn btn-sm btn-danger rounded">Hapus</button>
+                                    </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
-            
+
         </table>
 
     </div>

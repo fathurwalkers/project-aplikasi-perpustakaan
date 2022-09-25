@@ -32,7 +32,12 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::get('/daftar-pengguna', [BackController::class, 'daftar_pengguna'])->name('daftar-pengguna');
     Route::get('/daftar-buku', [BackController::class, 'daftar_buku'])->name('daftar-buku');
     Route::get('/daftar-kategori', [BackController::class, 'daftar_kategori'])->name('daftar-kategori');
+
     Route::get('/daftar-pinjaman', [BackController::class, 'daftar_pinjaman'])->name('daftar-pinjaman');
+    Route::post('/daftar-pinjaman/hapus-pinjaman', [BackController::class, 'hapus_pinjaman'])->name('hapus-pinjaman');
+    Route::post('/daftar-pinjaman/konfirmasi-pinjaman', [BackController::class, 'konfirmasi_pinjaman'])->name('konfirmasi-pinjaman');
+    Route::post('/daftar-pinjaman/konfirmasi-pengembalian', [BackController::class, 'konfirmasi_pengembalian'])->name('konfirmasi-pengembalian');
+
     Route::get('/daftar-laporan', [BackController::class, 'daftar_laporan'])->name('daftar-laporan');
 
     // Lihat Route

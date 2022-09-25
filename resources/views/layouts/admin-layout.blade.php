@@ -89,9 +89,11 @@
                         {{-- <a class="collapse-item" href="CariBuku.html">Cari Buku</a> --}}
                         <a class="collapse-item" href="{{ route('tambah-buku') }}">Tambah Buku</a>
 
+                        @if ($users->login_level == 'admin')
                         <h6 class="collapse-header">Navigasi Kategori :</h6>
                         <a class="collapse-item" href="{{ route('daftar-kategori') }}">Daftar Kategori</a>
                         <a class="collapse-item" href="{{ route('tambah-kategori') }}">Tambah Kategori</a>
+                        @endif
                     </div>
                 </div>
             </li>
@@ -124,7 +126,9 @@
                     <div class="bg-white e py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('daftar-pinjaman') }}">Daftar Pinjaman</a>
                         <a class="collapse-item" href="{{ route('tambah-pinjaman') }}">Tambah Pinjaman</a>
+                        @if ($users->login_level == 'admin')
                         <a class="collapse-item" href="{{ route('daftar-laporan') }}">Laporan</a>
+                        @endif
                     </div>
                 </div>
             </li>
