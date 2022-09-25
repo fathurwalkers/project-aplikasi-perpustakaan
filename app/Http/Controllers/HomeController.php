@@ -32,6 +32,7 @@ class HomeController extends Controller
         $searchquery = $request->search;
         $cari = '%' . $searchquery . '%';
         // $buku = Buku::all();
+        $kategori = Kategori::all();
         $buku = Buku::where('buku_judul','LIKE','%'.$searchquery.'%')->get();
         // $buku = Buku::where('buku_judul', 'LIKE', '%$searchquery%')->get();
         // $buku = Buku::where('buku_judul', 'LIKE', $cari)
@@ -43,7 +44,8 @@ class HomeController extends Controller
 
         // return ['buku' => $buku];
         return response()->json([
-            'buku' => $buku
+            'buku' => $buku,
+            'kategori' => $kategori,
         ]);
 
         // ['buku_judul','buku_kodekategori','buku_penerbit','buku_penulis','buku_tahunterbit','buku_jumlahhalaman','buku_support_rekomendasi']

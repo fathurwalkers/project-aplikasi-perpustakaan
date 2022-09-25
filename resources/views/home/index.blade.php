@@ -187,8 +187,9 @@
                 var output = '';
                 for (let i = 0; i < buku_ukuran; i++) {
                     let buku_get = data.buku[i];
-                    console.log(buku_get);
-                    console.log(buku_get['buku_judul']);
+                    // console.log(buku_get);
+                    // console.log(data.kategori[1]['kategori_nama']);
+                    // console.log(buku_get['buku_judul']);
 
                     output += '<div class="col-sm-6 col-md-6 col-lg-6 mb-4">';
                     output += '<div class="card h-100 w-100" style="s">';
@@ -285,11 +286,11 @@
                     output += '</tr>';
                     output += '<tr>';
                     output += '    <td class="fontubah">Kode Kategori </td>';
-                    output += '     <td class="fontubah">&nbsp;: {{ $item->buku_kodekategori }}</td>';
+                    output += '     <td class="fontubah">&nbsp;: '+buku_get['buku_kodekategori']+'</td>';
                     output += ' </tr>';
                     output += '  <tr>';
                     output += '      <td class="fontubah">Kategori </td>';
-                    output += '      <td class="fontubah">&nbsp;: {{ $item->kategori->kategori_nama }}</td>';
+                    output += '      <td class="fontubah">&nbsp;: '+data.kategori[buku_get['kategori_id']]['kategori_nama']+'</td>';
                     output += '  </tr>';
                     output += '</table>';
                     output += '</div>';
