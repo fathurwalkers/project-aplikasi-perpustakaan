@@ -27,7 +27,11 @@
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand">Aplikasi Perpustakaan Digital</a>
+        {{-- <img src="{{ asset('logo-baubau.png') }}" alt="" width="40px"> --}}
+        <a class="navbar-brand">
+            <img src="{{ asset('logo-baubau.png') }}" alt="" width="40px">
+            &nbsp; <b> Aplikasi Perpustakaan Digital </b>
+        </a>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <button class="btn btn-info btn-md ml-2" onclick="location.href = '{{ route('home') }}';">Home</button>
