@@ -52,6 +52,11 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>BERANDA</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Halaman Utama</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -127,7 +132,7 @@
                         <a class="collapse-item" href="{{ route('daftar-pinjaman') }}">Daftar Pinjaman</a>
                         <a class="collapse-item" href="{{ route('tambah-pinjaman') }}">Tambah Pinjaman</a>
                         @if ($users->login_level == 'admin')
-                        <a class="collapse-item" href="{{ route('daftar-laporan') }}">Laporan</a>
+                        {{-- <a class="collapse-item" href="{{ route('daftar-laporan') }}">Laporan</a> --}}
                         @endif
                     </div>
                 </div>

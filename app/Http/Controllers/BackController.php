@@ -18,8 +18,16 @@ class BackController extends Controller
     public function index()
     {
         $users = session('data_login');
+        $count_users = Login::all()->count();
+        $count_buku = Buku::all()->count();
+        $count_pinjaman = Pinjaman::all()->count();
+        $count_kategori = Kategori::all()->count();
         return view('admin.index', [
-            'users' => $users
+            'users' => $users,
+            'count_users' => $count_users,
+            'count_buku' => $count_buku,
+            'count_pinjaman' => $count_pinjaman,
+            'count_kategori' => $count_kategori,
         ]);
     }
 
