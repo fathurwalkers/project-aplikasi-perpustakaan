@@ -461,18 +461,86 @@ class BackController extends Controller
         $kategori_ids = [
             1, 2, 3, 4, 5, 6, 7, 8, 10
         ];
-        for ($i = 1; $i < 10; $i++) {
+
+        $array_buku_judul = [
+            'Pedoman Budidaya Jamur',
+            'Pedoman Bertanam Tomat',
+            'Pedoman Bertanam Coklat',
+            'Kamus Praktik Keperawatan',
+            'Pedoman Budidaya Ikan Gurami',
+            'Pedoman Budidaya Ikan Nila',
+            'Pedoman Budidaya Tambak Udang',
+            'Pedoman Bertanam Bunga Mawar',
+            'Nutrisi Janin & Bayi Sejak Usia Dalam Kandungan',
+            'Panduan Budidaya Belut Secara Intensif',
+            'Lobster Air Tawar Budi Daya dan Pascapanen',
+            'Bahasa Indonesia',
+            'Confidence',
+            'Kado Buat Ayah Bunda',
+            'Pilar-Pilar Kebahagiaan',
+            'Materi Pokok Metode Penelitian',
+            'Psikologi Praktis Remaja',
+            'Dasar-Dasar Teknik Jahit Menjahit ',
+            'Filsafat Ilmu Sebuah Pengantar Populer ',
+            'Menyegarkan Islam Kita',
+            'Jangan Sakiti Rasulullah Al-Musthafa',
+            'Mudah Belajar Ruby ',
+            'Sistem Informasi Manajemen',
+            'RPUL (Rangkuman Pengetahuan Umum Lengkap)',
+            '125 Tips Menguasai Bahasa PHP',
+            '100 Cara Mengenali Karakter Dia',
+            'Jurnalistik Teori dan Praktik',
+            'Etika & Manajemen Kebidanan',
+            'Psikologi Faal',
+            'Akuntansi Intermediate',
+            'Pengantar Psikologi untuk Kebidanan',
+            'Etika Prosesi Kebidanan ',
+            'Keajaiban Kekuatan Pikiran',
+            'Dakwah Kampus',
+            'Tradisi Islami  Panduan Prosesi Kelahiran, Perkawinan, Kematian',
+            'Mengupas Seksualitas',
+            'Biografi Muhammad Rasulullah',
+            'Materi pokok Manajemen',
+            'Tumbuh Kembang Remaja Dan Permasalahanya',
+            'Materi pokok statistika',
+            'Pengantar Ilmu Kebidanan',
+            'Metode Inventaris Sumber Daya Lahan',
+            'Pedoman Budidaya Kepiting',
+            'Pedoman Bertanam Cabai'
+        ];
+
+        $array_buku_penerbit = [
+            'Tim Karyan Mandiri',
+            'Khasiko Publisher',
+            'Nuansa Aulia',
+            'Aneka Ilmu',
+            'Dara Book',
+            'Elex Media',
+            'Penerbit Libri',
+            'Media Komputindo',
+            'Jaya Ilmu',
+            'Serambi Ilmu Semesta'
+        ];
+        // dd($random_penerbit);
+        // die;
+
+        $count_array_judul_buku = count($array_buku_judul);
+
+        for ($i = 1; $i < $count_array_judul_buku; $i++) {
             $random_support_rekomendasi = $faker->randomNumber(2);
+            $random_penerbit = Arr::random($array_buku_penerbit);
             $kategori_idx = Arr::random($kategori_ids);
             $kategori = Kategori::find($kategori_idx);
             $saveBuku = new Buku;
             $id_kat = intval($kategori->id);
             $newbuku = $saveBuku->create([
-                'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
+                // 'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
+                'buku_judul'                => $array_buku_judul[$i],
                 'buku_kode'                 => $buku_kode,
                 'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
                 'buku_penulis'              => $faker->name,
-                'buku_penerbit'             => $faker->company,
+                // 'buku_penerbit'             => $faker->company,
+                'buku_penerbit'             => $random_penerbit,
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
                 'buku_support_rekomendasi'  => intval($random_support_rekomendasi),
@@ -482,6 +550,9 @@ class BackController extends Controller
             $newbuku->kategori()->associate($kategori_idx);
             $newbuku->save();
         }
+        $buku = Buku::all();
+        dd($buku);
+        die;
         return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Berhasil generate 50 buku!');
     }
 }

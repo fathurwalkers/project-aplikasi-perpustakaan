@@ -119,10 +119,10 @@
                         <td class="fontubah">Kode Kategori </td>
                         <td class="fontubah">&nbsp;: {{ $item->buku_kodekategori }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td class="fontubah">Kategori </td>
                         <td class="fontubah">&nbsp;: {{ $item->kategori->kategori_nama }}</td>
-                    </tr>
+                    </tr> --}}
                 </table>
             </div>
             <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid" value="{{ $item->id }}">Tambah Pinjaman</button>
@@ -239,10 +239,10 @@
                     output += '    <td class="fontubah">Kode Kategori </td>';
                     output += '     <td class="fontubah">&nbsp;: '+buku_get['buku_kodekategori']+'</td>';
                     output += ' </tr>';
-                    output += '  <tr>';
-                    output += '      <td class="fontubah">Kategori </td>';
-                    output += '      <td class="fontubah">&nbsp;: '+data.kategori[buku_get['kategori_id']]['kategori_nama']+'</td>';
-                    output += '  </tr>';
+                    // output += '  <tr>';
+                    // output += '      <td class="fontubah">Kategori </td>';
+                    // output += '      <td class="fontubah">&nbsp;: '+data.kategori[buku_get['kategori_id']]['kategori_nama']+'</td>';
+                    // output += '  </tr>';
                     output += '</table>';
                     output += '</div>';
                     output += '<button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid" value="{{ $item->id }}">Tambah Pinjaman</button>';
