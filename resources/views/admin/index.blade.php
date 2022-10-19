@@ -80,6 +80,12 @@
         </div>
     </div>
 
+    {{-- <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2> Buku yang anda cari tidak ditemukan. </h2>
+        </div>
+    </div> --}}
+
 </div>
 
 @endsection
