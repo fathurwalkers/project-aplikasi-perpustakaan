@@ -42,7 +42,7 @@
                     </h4>
                 </div>
             </div>
-            <form action="{{ route('post-search') }}" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('post-search') }}" enctype="multipart/form-data" method="POST" onsubmit="return false;">
                 @csrf
                 <input type="text" class="form-control" id="searchbox" placeholder="Contoh : Buku Bahasa Indonesia" name="search">
             </form>
