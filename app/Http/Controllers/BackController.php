@@ -506,7 +506,12 @@ class BackController extends Controller
             'Pengantar Ilmu Kebidanan',
             'Metode Inventaris Sumber Daya Lahan',
             'Pedoman Budidaya Kepiting',
-            'Pedoman Bertanam Cabai'
+            'Pedoman Bertanam Cabai',
+            'Pedoman Bertanam Ubi',
+            'Pedoman Bertanam Tomat',
+            'Pedoman Bertanam Gandum',
+            'Pedoman Ilmu Filsafat',
+            'Pedoman Ilmu Rukun Islam',
         ];
 
         $array_buku_penerbit = [

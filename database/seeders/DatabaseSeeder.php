@@ -180,6 +180,11 @@ class DatabaseSeeder extends Seeder
             'Manajemen',
             'Ilmu Sejarah',
             'RPUL',
+            'Astronomy Dasar',
+            'Astronomy Lanjutan',
+            'Astronomy Rangkuman',
+            'Pengetahuan Dasar Matematika',
+            'Pengetahuan Dasar Bahasa Inggris',
         ];
 
         $array_kode_kategori = [
