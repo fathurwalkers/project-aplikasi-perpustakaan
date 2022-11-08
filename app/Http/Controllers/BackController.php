@@ -462,7 +462,6 @@ class BackController extends Controller
 
         $array_buku_judul = [
             'Pedoman Budidaya Jamur',
-            'Pedoman Bertanam Tomat',
             'Pedoman Bertanam Coklat',
             'Kamus Praktik Keperawatan',
             'Pedoman Budidaya Ikan Gurami',
@@ -533,9 +532,7 @@ class BackController extends Controller
             $random_support_rekomendasi = $faker->randomNumber(2);
             $random_penerbit = Arr::random($array_buku_penerbit);
             $kategori_random = Arr::random($kategori);
-            $kategori = Kategori::find($kategori_idx);
             $saveBuku = new Buku;
-            $id_kat = intval($kategori->id);
             $newbuku = $saveBuku->create([
                 // 'buku_judul'                => $faker->words($faker->randomDigitNot(0), true),
                 'buku_judul'                => $array_buku_judul[$i],
@@ -546,7 +543,7 @@ class BackController extends Controller
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
                 'buku_support_rekomendasi'  => intval($random_support_rekomendasi),
-                'kategori_id'               => $kategori_random->id,
+                'kategori_id'               => $kategori_random["id"],
                 'created_at'                => now(),
                 'updated_at'                => now()
             ]);
