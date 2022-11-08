@@ -458,9 +458,7 @@ class BackController extends Controller
     {
         $faker = Faker::create('id_ID');
         $buku_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
-        $kategori_ids = [
-            1, 2, 3, 4, 5, 6, 7, 8, 10
-        ];
+        $kategori = Kategori::all()->toArray();
 
         $array_buku_judul = [
             'Pedoman Budidaya Jamur',
@@ -534,7 +532,7 @@ class BackController extends Controller
         for ($i = 1; $i < $count_array_judul_buku; $i++) {
             $random_support_rekomendasi = $faker->randomNumber(2);
             $random_penerbit = Arr::random($array_buku_penerbit);
-            $kategori_idx = Arr::random($kategori_ids);
+            $kategori_random = Arr::random($kategori);
             $kategori = Kategori::find($kategori_idx);
             $saveBuku = new Buku;
             $id_kat = intval($kategori->id);
@@ -544,15 +542,15 @@ class BackController extends Controller
                 'buku_kode'                 => $buku_kode,
                 'buku_kodekategori'         => $faker->randomNumber(3) . "." . $faker->randomNumber(3),
                 'buku_penulis'              => $faker->name,
-                // 'buku_penerbit'             => $faker->company,
                 'buku_penerbit'             => $random_penerbit,
                 'buku_tahunterbit'          => "201" . $faker->randomNumber(1),
                 'buku_jumlahhalaman'        => $faker->randomNumber(3),
                 'buku_support_rekomendasi'  => intval($random_support_rekomendasi),
+                'kategori_id'               => $kategori_random->id,
                 'created_at'                => now(),
                 'updated_at'                => now()
             ]);
-            $newbuku->kategori()->associate($kategori_idx);
+            // $newbuku->kategori()->associate($kategori_idx);
             $newbuku->save();
         }
         $buku = Buku::all();
