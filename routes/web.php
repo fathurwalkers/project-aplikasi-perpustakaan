@@ -59,6 +59,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
 
     // Update Route
     Route::post('/update-buku/update/{id}', [BackController::class, 'update_buku'])->name('update-buku');
+    Route::post('/update-pengguna/update/{id}', [BackController::class, 'update_pengguna'])->name('update-pengguna');
 
     // Hapus Route
     Route::post('/hapus-buku/hapus/{id}', [BackController::class, 'hapus_buku'])->name('hapus-buku');

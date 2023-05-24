@@ -46,8 +46,63 @@
                     <td>
                         <div class="row mx-auto d-flex justify-content-center">
                             {{-- <button class="btn btn-sm btn-info rounded mr-1">Lihat</button> --}}
-                            <button class="btn btn-sm btn-primary rounded mr-1">Edit</button>
+                            <button class="btn btn-sm btn-primary rounded mr-1" data-toggle="modal" data-target="#modal_update{{ $item->id }}">Edit</button>
                             <button class="btn btn-sm btn-danger rounded" data-toggle="modal" data-target="#modal_hapus{{ $item->id }}">Hapus</button>
+
+                            {{-- MODAL UPDATE --}}
+                            <div class="modal fade" id="modal_update{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Ubah data Pengguna</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+
+                                        <form action="{{ route('update-pengguna', $item->id) }}" method="POST">
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <label for="login_nama" class="text-bold text-dark">
+                                                            Nama Pengguna
+                                                        </label>
+                                                        <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="login_nama" aria-describedby="login_nama" name="login_nama" autofocus value="{{ $item->login_nama }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <label for="login_email" class="text-bold text-dark">
+                                                            Email
+                                                        </label>
+                                                        <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="login_email" aria-describedby="login_email" name="login_email" autofocus value="{{ $item->login_email }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <label for="login_telepon" class="text-bold text-dark">
+                                                            No. HP / Telepon
+                                                        </label>
+                                                        <input type="text" class="form-control text-bold text-dark border-1 border-dark" id="login_telepon" aria-describedby="login_telepon" name="login_telepon" autofocus value="{{ $item->login_telepon }}">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-info" type="button" data-dismiss="modal">Tidak</button>
+
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Ya</button>
+
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
 
                             {{-- MODAL HAPUS --}}
                             <div class="modal fade" id="modal_hapus{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

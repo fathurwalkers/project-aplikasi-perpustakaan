@@ -31,6 +31,24 @@ class BackController extends Controller
         ]);
     }
 
+    public function update_pengguna(Request $request, $id)
+    {
+        $id_pengguna = $id;
+        $login = Login::find($id_pengguna);
+
+        $save_pengguna = $login->update([
+            'login_nama' => $request->login_nama,
+            'login_email' => $request->login_email,
+            'login_telepon' => $request->login_telepon,
+            'updated_at' => now()
+        ]);
+        if ($save_pengguna == true) {
+            return redirect()->route('daftar-pengguna')->with('status', 'Berhasil mengubah Pengguna.');
+        } else {
+            return redirect()->route('daftar-pengguna')->with('status', 'GAGAL mengubah Pengguna.');
+        }
+    }
+
     public function hapus_pengguna(Request $request, $id)
     {
         $id_pengguna = $id;
@@ -38,7 +56,9 @@ class BackController extends Controller
 
         $hapus_pengguna = $login->forceDelete();
         if ($hapus_pengguna == true) {
-            return redirect()->route('daftar-pengguna')->with('berhasil_tambah', 'Berhasil melakukan konfirmasi peminjaman');
+            return redirect()->route('daftar-pengguna')->with('status', 'Berhasil menghapus Pengguna.');
+        } else {
+            return redirect()->route('daftar-pengguna')->with('status', 'GAGAL menghapus Pengguna.');
         }
     }
 
