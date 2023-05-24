@@ -52,6 +52,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     Route::post('/post-tambah-buku/post', [BackController::class, 'post_tambah_buku'])->name('post-tambah-buku');
     Route::post('/post-tambah-kategori/post', [BackController::class, 'post_tambah_kategori'])->name('post-tambah-kategori');
     Route::post('/post-tambah-pinjaman/post', [BackController::class, 'post_tambah_pinjaman'])->name('post-tambah-pinjaman');
+    Route::post('/post-tambah-pinjaman-home/post', [BackController::class, 'post_tambah_pinjaman_home'])->name('post-tambah-pinjaman-home');
 
     // Edit Route
     Route::get('/edit-buku/edit/{id}', [BackController::class, 'edit_buku'])->name('edit-buku');
@@ -62,6 +63,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'ceklogin'], function ()
     // Hapus Route
     Route::post('/hapus-buku/hapus/{id}', [BackController::class, 'hapus_buku'])->name('hapus-buku');
     Route::post('/hapus-kategori/hapus/{id}', [BackController::class, 'hapus_kategori'])->name('hapus-kategori');
+    Route::post('/hapus-pengguna/hapus/{id}', [BackController::class, 'hapus_pengguna'])->name('hapus-pengguna');
 
     // Test Route
     Route::get('/test-page', [MailController::class, 'redirectmail'])->name('test-page');

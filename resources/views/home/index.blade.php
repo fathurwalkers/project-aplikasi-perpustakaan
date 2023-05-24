@@ -20,7 +20,7 @@
 @section('body')
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-2 d-flex justify-content-end border border-1 py-2">
-        <form action="{{ route('post-tambah-pinjaman') }}" method="post">
+        <form action="{{ route('post-tambah-pinjaman-home') }}" method="post">
             @csrf
             <input type="hidden" name="id_buku" value="">
             <button class="btn btn-info btn-md ml-2" id="sendrequest">

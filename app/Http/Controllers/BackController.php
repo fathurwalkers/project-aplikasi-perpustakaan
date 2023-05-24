@@ -31,6 +31,17 @@ class BackController extends Controller
         ]);
     }
 
+    public function hapus_pengguna(Request $request, $id)
+    {
+        $id_pengguna = $id;
+        $login = Login::find($id_pengguna);
+
+        $hapus_pengguna = $login->forceDelete();
+        if ($hapus_pengguna == true) {
+            return redirect()->route('daftar-pengguna')->with('berhasil_tambah', 'Berhasil melakukan konfirmasi peminjaman');
+        }
+    }
+
     public function daftar_buku()
     {
         $findSession = session('data_login');
@@ -300,6 +311,51 @@ class BackController extends Controller
 
         // $id_buku_filtered = array_filter($explode_id_buku);
         $id_buku_filtered = array_filter($request_id_buku);
+
+        $session_users = session('data_login');
+        $users = Login::find($session_users->id);
+        $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
+        $validatedData = $request->validate([
+            'id_buku'     => 'required|filled',
+        ]);
+
+        $parameter_for = count($id_buku_filtered);
+
+        for ($i=0; $i < $parameter_for; $i++) {
+            $buku_for = Buku::find($id_buku_filtered[$i]);
+            $default_support = intval($buku_for->buku_support_rekomendasi);
+            $total_tambah_support = 1 + $default_support;
+            $tambah_support = $buku_for->update([
+                'buku_support_rekomendasi' => $total_tambah_support,
+                'updated_at' => now()
+            ]);
+        }
+
+        $pinjaman = new Pinjaman;
+        $savePinjaman = $pinjaman->create([
+            'pinjaman_kode' => $pinjaman_kode,
+            'pinjaman_pengguna' => $users->login_nama,
+            'pinjaman_status' => "PENDING",
+            'tanggal_pinjam' => now(),
+            'tanggal_kembali' => null,
+            'login_id' => $users->id,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $savePinjaman->save();
+        $savePinjaman->login()->associate($users->id);
+        $savePinjaman->buku()->attach($id_buku_filtered);
+        return redirect()->route('daftar-pinjaman')->with('berhasil_tambah', 'Berhasil menyimpan Pinjaman Baru.');
+    }
+
+    public function post_tambah_pinjaman_home(Request $request)
+    {
+        $request_id_buku = $request->id_buku;
+        // dd($request->id_buku);
+        $explode_id_buku = explode(",", $request_id_buku);
+
+        $id_buku_filtered = array_filter($explode_id_buku);
+        // $id_buku_filtered = array_filter($request_id_buku);
 
         $session_users = session('data_login');
         $users = Login::find($session_users->id);
