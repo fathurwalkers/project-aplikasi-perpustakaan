@@ -125,7 +125,7 @@
                     </tr> --}}
                 </table>
             </div>
-            <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid" value="{{ $item->id }}">Tambah Pinjaman</button>
+            <button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid clickbutton" onclick="storKeranjang({{ $item->id }})" value="{{ $item->id }}">Tambah Pinjaman</button>
         </div>
     </div>
     @endforeach
@@ -143,17 +143,31 @@
     var count = 0;
     var counterbadges = document.getElementById("counterbadges");
 
-    $('.counters').click(function(){
+    // $('.counters').click(function(){
+    //     count++;
+    //     counterbadges.innerHTML = count;
+    // });
+    function counterUp() {
         count++;
         counterbadges.innerHTML = count;
-    });
+    }
 
-    $("button").click(function() {
-        var pinjaman = $(this).val();
+    // $("button").click(function() {
+    //     var pinjaman = $(this).val();
+    //     array_pinjaman.push(pinjaman);
+    //     console.log(array_pinjaman);
+    //     console.log(pinjaman);
+    // });
+
+    function storKeranjang(thisvalue) {
+        console.log(thisvalue);
+        // var pinjaman = $("button").val();
+        var pinjaman = thisvalue.toString();
         array_pinjaman.push(pinjaman);
         console.log(array_pinjaman);
         console.log(pinjaman);
-    });
+        counterUp();
+    }
 
     $('#sendrequest').click(function() {
         $('input:hidden[name=id_buku]').val(array_pinjaman);
@@ -254,7 +268,7 @@
                         // output += '  </tr>';
                         output += '</table>';
                         output += '</div>';
-                        output += '<button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid" value="{{ $item->id }}">Tambah Pinjaman</button>';
+                        output += '<button class="btn btn-md rounded btn-success mt-auto mx-4 mb-3 counters bukuid clickbutton" onclick="storKeranjang('+buku_get['id']+')" value="'+buku_get['id']+'">Tambah Pinjaman</button>';
                         output += '</div>';
                         output += '</div>';
 
