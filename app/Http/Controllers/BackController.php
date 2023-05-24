@@ -295,10 +295,11 @@ class BackController extends Controller
     public function post_tambah_pinjaman(Request $request)
     {
         $request_id_buku = $request->id_buku;
+        // dd($request->id_buku);
+        // $explode_id_buku = explode(",", $request_id_buku);
 
-        $explode_id_buku = explode(",", $request_id_buku);
-
-        $id_buku_filtered = array_filter($explode_id_buku);
+        // $id_buku_filtered = array_filter($explode_id_buku);
+        $id_buku_filtered = array_filter($request_id_buku);
 
         $session_users = session('data_login');
         $users = Login::find($session_users->id);
