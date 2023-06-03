@@ -8,6 +8,7 @@ use App\Http\Controllers\MailController;
 Route::get('/login', [BackController::class, 'login'])->name('login');
 Route::get('/register', [BackController::class, 'register'])->name('register');
 Route::post('/post-search', [HomeController::class, 'post_search'])->name('post-search');
+Route::post('/post-search-kategori', [HomeController::class, 'post_search_kategori'])->name('post-search-kategori');
 Route::post('/post-login', [BackController::class, 'post_login'])->name('post-login');
 Route::post('/post-register', [BackController::class, 'post_register'])->name('post-register');
 Route::post('/logout', [BackController::class, 'logout'])->name('logout');

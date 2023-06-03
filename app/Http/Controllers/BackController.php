@@ -22,6 +22,7 @@ class BackController extends Controller
         $count_buku = Buku::all()->count();
         $count_pinjaman = Pinjaman::all()->count();
         $count_kategori = Kategori::all()->count();
+        $kategori_buku = Kategori::all();
         return view('admin.index', [
             'users' => $users,
             'count_users' => $count_users,

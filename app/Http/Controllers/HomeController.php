@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $buku = Buku::all();
-        $kategori = Buku::all();
+        $kategori = Kategori::all();
         return view('home.index', [
             'buku' => $buku,
             'kategori' => $kategori,
@@ -32,6 +32,17 @@ class HomeController extends Controller
         $cari = '%' . $searchquery . '%';
         $kategori = Kategori::all();
         $buku = Buku::where('buku_judul','LIKE','%'.$searchquery.'%')->get();
+        return response()->json([
+            'buku' => $buku,
+            'kategori' => $kategori,
+        ]);
+    }
+
+    public function post_search_kategori(Request $request)
+    {
+        $searchquery = $request->search;
+        $kategori = Kategori::find(intval($searchquery));
+        $buku = Buku::where('kategori_id', $kategori->id)->get();
         return response()->json([
             'buku' => $buku,
             'kategori' => $kategori,
