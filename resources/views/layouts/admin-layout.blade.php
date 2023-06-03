@@ -188,7 +188,7 @@
                                     <h1 class="h5 text-bold text-dark font-weight-bold">@yield('main-header')</h1>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
-                                    <form action="{{ route('dashboard') }}" method="GET">
+                                    <form action="{{ url()->previous() }}" method="GET">
                                         <button type="submit" class="btn btn-sm rounded btn-info text-bold shadow btn-outline-dark text-white">Kembali</button>
                                     </form>
                                 </div>
