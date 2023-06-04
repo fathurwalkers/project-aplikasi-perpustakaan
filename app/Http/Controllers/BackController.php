@@ -327,21 +327,14 @@ class BackController extends Controller
     public function post_tambah_pinjaman(Request $request)
     {
         $request_id_buku = $request->id_buku;
-        // dd($request->id_buku);
-        // $explode_id_buku = explode(",", $request_id_buku);
-
-        // $id_buku_filtered = array_filter($explode_id_buku);
         $id_buku_filtered = array_filter($request_id_buku);
-
         $session_users = session('data_login');
         $users = Login::find($session_users->id);
         $pinjaman_kode = strtoupper(Str::random(5) . "-" . Str::random(5));
         $validatedData = $request->validate([
             'id_buku'     => 'required|filled',
         ]);
-
         $parameter_for = count($id_buku_filtered);
-
         for ($i=0; $i < $parameter_for; $i++) {
             $buku_for = Buku::find($id_buku_filtered[$i]);
             $default_support = intval($buku_for->buku_support_rekomendasi);
@@ -351,7 +344,6 @@ class BackController extends Controller
                 'updated_at' => now()
             ]);
         }
-
         $pinjaman = new Pinjaman;
         $savePinjaman = $pinjaman->create([
             'pinjaman_kode' => $pinjaman_kode,
