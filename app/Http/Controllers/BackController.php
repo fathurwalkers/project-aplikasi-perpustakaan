@@ -510,7 +510,7 @@ class BackController extends Controller
         $buku->kategori()->dissociate($buku->kategori->id);
         $buku->kategori()->associate($id_kategori);
         $buku->save();
-        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil diubah!');
+        return redirect()->route('daftar-buku')->with('berhasil_tambah', 'Buku telah berhasil diubah.');
     }
 
     public function hapus_buku(Request $request, $id)
