@@ -37,6 +37,14 @@ class HomeController extends Controller
                 ]);
             } else {
                 $buku_pinjaman = PinjamanBuku::where('pinjaman_id', $pinjaman->id)->first();
+                if ($buku_pinjaman == null) {
+                    $buku = Buku::all();
+                    $kategori = Kategori::all();
+                    return view('home.index', [
+                        'buku' => $buku,
+                        'kategori' => $kategori,
+                    ]);
+                }
                 $buku_take = Buku::find($buku_pinjaman->buku_id);
                 $queryraw = "kategori_id = ". $buku_take->kategori_id . " DESC";
                 $buku = Buku::orderByRaw($queryraw)->get();
